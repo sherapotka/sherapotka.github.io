@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shera Potka — Research</title>
+  <meta name="description" content="Research by Shera Potka on fairness in recommenders, demographic bias in LLMs, and privacy-preserving NLP." />
+  <meta name="theme-color" content="#111827">
+  <style>
+    :root{
+      --bg:#0b1220;         /* deep navy */
+      --card:#111827;       /* slate-900 */
+      --muted:#94a3b8;      /* slate-400 */
+      --text:#e5e7eb;       /* zinc-200 */
+      --accent:#60a5fa;     /* sky-400 */
+      --accent-2:#a78bfa;   /* violet-400 */
+      --ring: rgba(96,165,250,.35);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:radial-gradient(1200px 700px at 10% -10%, rgba(96,165,250,.12), transparent 50%),
+                           radial-gradient(900px 500px at 110% 0%, rgba(167,139,250,.12), transparent 40%), var(--bg);
+              color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji"; line-height:1.55}
+    a{color:var(--accent); text-decoration:none}
+    a:hover{opacity:.9}
+    .wrap{max-width:1100px; margin:0 auto; padding:24px}
+    header{display:flex; gap:16px; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{font-weight:700; letter-spacing:.3px}
+    .chip{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(96,165,250,.1); color:#cfe6ff; border:1px solid rgba(96,165,250,.25)}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:12px; background:linear-gradient(135deg, var(--accent), var(--accent-2)); color:#0b1020; font-weight:600; box-shadow:var(--shadow)}
+    .btn.ghost{background:transparent; border:1px solid rgba(148,163,184,.35); color:var(--text)}
+    .hero{padding:36px 0 8px; display:grid; grid-template-columns:1.2fr .8fr; gap:28px}
+    .hero h1{font-size:clamp(28px, 4vw, 40px); margin:.2rem 0}
+    .muted{color:var(--muted)}
+    .tagline{font-size:1.05rem; color:#d8dee9}
+    .section{margin:44px 0 22px}
+    .section h2{font-size:1.6rem; margin:0 0 10px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.0)); border:1px solid rgba(148,163,184,.18);
+          border-radius:var(--radius); padding:22px; box-shadow:var(--shadow)}
+    .grid{display:grid; gap:18px}
+    /* 3-up image grid */
+    .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px}
+    .gallery img{width:100%; height:200px; object-fit:cover; border-radius:14px; border:1px solid rgba(148,163,184,.25); cursor:zoom-in; transition:transform .2s ease}
+    .gallery img:hover{transform:translateY(-2px)}
+    /* content layout for each contribution */
+    .contrib{display:grid; grid-template-columns:1.2fr .8fr; gap:22px; align-items:start}
+    .contrib .lead{font-size:1.05rem}
+    .bullets{margin:10px 0 0 0; padding-left:18px}
+    .bullets li{margin:6px 0}
+    /* toolkit chips */
+    .chips{display:flex; flex-wrap:wrap; gap:10px}
+    .chip.soft{background:rgba(148,163,184,.12); border-color:rgba(148,163,184,.28); color:#dbe2ea}
+    /* future cards */
+    .future{display:grid; grid-template-columns:repeat(2,1fr); gap:18px}
+    .future .fcard{padding:18px}
+    .fcard h3{margin:6px 0 8px; font-size:1.05rem}
+    /* lightbox */
+    dialog#lightbox{padding:0; border:none; background:transparent}
+    dialog::backdrop{background:rgba(0,0,0,.75)}
+    .lightbox-img{max-width:min(92vw,1100px); max-height:88vh; border-radius:12px; display:block}
+    .lightbox-bar{display:flex; justify-content:space-between; gap:12px; margin:10px auto 0; width:min(92vw,1100px)}
+    .small{font-size:.92rem}
+    footer{margin:50px 0 20px; color:var(--muted)}
+    /* responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .contrib{grid-template-columns:1fr}
+      .gallery img{height:170px}
+      .future{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">Shera Potka</div>
+      <nav style="display:flex; gap:10px; align-items:center">
+        <a class="chip" href="/">← Back to main site</a>
+        <a class="btn ghost" href="SheraPotkaCVa.pdf" target="_blank" rel="noopener">CV</a>
+      </nav>
+    </header>
+
+    <section class="hero card">
+      <div>
+        <span class="chip">Research Statement</span>
+        <h1>Fairness • Bias • Privacy in AI</h1>
+        <p class="tagline">
+          I design and evaluate AI systems that are technically strong, ethically grounded, and socially responsible—
+          with a focus on fairness, bias mitigation, and privacy in NLP and recommender systems.
+        </p>
+        <p class="muted small">My work blends rigorous experiments with socially informed objectives so that deployed AI respects diverse human experiences.</p>
+      </div>
+      <div class="card">
+        <div class="muted small" style="margin-bottom:8px">Highlights</div>
+        <ul class="bullets" style="margin:0">
+          <li><strong>FairRec</strong>: fairness-aware link recommendations with exposure parity</li>
+          <li>Bias auditing across GPT, BERT, Cohere, BGE using <em>Fightin’ Words</em> + <em>SC-WEAT</em></li>
+          <li>DP text generation via embedding-space perturbations (privacy ↔ utility)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTRIBUTION 1 -->
+    <section class="section">
+      <h2>1) Fairness in Recommendation Systems</h2>
+      <div class="contrib">
+        <div class="card">
+          <p class="lead">
+            Recommendation algorithms shape visibility. <strong>FairRec</strong> optimizes both accuracy and equitable exposure
+            by integrating exposure-parity constraints into the objective over a probabilistic graph model.
+          </p>
+          <ul class="bullets">
+            <li>Addresses homophily and popularity bias; boosts minority visibility.</li>
+            <li>Constrained optimization + stochastic sampling scales to large graphs.</li>
+            <li>On Twitter &amp; citation graphs: <strong>+35% visibility</strong> for under-represented users with no significant precision loss.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="gallery">
+            <!-- Replace src with your actual images -->
+            <img src="images/fairrec-1.jpg" alt="Exposure distribution before/after FairRec on a social graph" loading="lazy" data-full="images/fairrec-1.jpg">
+            <img src="images/fairrec-2.jpg" alt="Minority visibility vs. accuracy trade-off curve" loading="lazy" data-full="images/fairrec-2.jpg">
+            <img src="images/fairrec-3.jpg" alt="Recommendation network highlighting improved exposure for minority nodes" loading="lazy" data-full="images/fairrec-3.jpg">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTRIBUTION 2 -->
+    <section class="section">
+      <h2>2) Demographic Bias Detection in Large Language Models</h2>
+      <div class="contrib">
+        <div class="card">
+          <p class="lead">
+            I quantify and explain demographic biases in embeddings from GPT/BERT/Cohere/BGE using a
+            frequency-weighted <em>Fightin’ Words</em> variant and <em>SC-WEAT</em> for contextual effects.
+          </p>
+          <ul class="bullets">
+            <li>Computes interpretable z-scores to reveal group-linked word associations.</li>
+            <li>Findings show persistent links (e.g., “Black” → criminal terms; “female” → domesticity/passivity) across models.</li>
+            <li>Results inform auditing and debiasing for production LLMs.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="gallery">
+            <img src="images/bias-1.jpg" alt="Bias map showing association strengths across demographic terms" loading="lazy" data-full="images/bias-1.jpg">
+            <img src="images/bias-2.jpg" alt="SC-WEAT contextual bias comparison across models" loading="lazy" data-full="images/bias-2.jpg">
+            <img src="images/bias-3.jpg" alt="Frequency-weighted z-scores visualized for gendered terms" loading="lazy" data-full="images/bias-3.jpg">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTRIBUTION 3 -->
+    <section class="section">
+      <h2>3) Privacy-Preserving Text Generation</h2>
+      <div class="contrib">
+        <div class="card">
+          <p class="lead">
+            I develop differentially private generation by perturbing <em>embedding space</em> rather than token probabilities,
+            preserving coherence while reducing memorization and leakage.
+          </p>
+          <ul class="bullets">
+            <li>DP-SGD plus inference-time embedding noise for smooth, contextual outputs.</li>
+            <li><strong>−60% identifiable memorization</strong> with &gt;85% human-rated quality retained.</li>
+            <li>Applications: healthcare narratives, legal anonymization, educational feedback.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="gallery">
+            <img src="images/privacy-1.jpg" alt="Privacy–utility frontier comparing methods" loading="lazy" data-full="images/privacy-1.jpg">
+            <img src="images/privacy-2.jpg" alt="Diagram of embedding-space noise injection in a transformer" loading="lazy" data-full="images/privacy-2.jpg">
+            <img src="images/privacy-3.jpg" alt="Membership inference attack reduction across settings" loading="lazy" data-full="images/privacy-3.jpg">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METHODS -->
+    <section class="section">
+      <h2>Methodological Toolkit</h2>
+      <div class="card">
+        <div class="chips" style="margin-bottom:8px">
+          <span class="chip soft">Embedding analysis (PCA, cosine)</span>
+          <span class="chip soft">Directional bias tests &amp; SC-WEAT</span>
+          <span class="chip soft">Demographic parity &amp; exposure fairness</span>
+          <span class="chip soft">Disparity ratios &amp; equal opportunity</span>
+          <span class="chip soft">Custom losses, Lagrangian relaxation</span>
+          <span class="chip soft">DP-SGD &amp; embedding perturbation</span>
+          <span class="chip soft">BLEU/ROUGE, perplexity, CoLA</span>
+          <span class="chip soft">BERT · RoBERTa · GPT · Cohere · BGE</span>
+        </div>
+        <p class="muted small">A diverse, reproducible toolkit lets me move across tasks while keeping scientific rigor.</p>
+      </div>
+    </section>
+
+    <!-- FUTURE -->
+    <section class="section">
+      <h2>Future Research Agenda</h2>
+      <div class="future">
+        <div class="card fcard">
+          <h3>Adaptive Fairness in Dynamic Systems</h3>
+          <p class="muted">Online learning to maintain fairness as populations and behaviors shift.</p>
+        </div>
+        <div class="card fcard">
+          <h3>Cross-lingual / Cross-cultural Auditing</h3>
+          <p class="muted">Extend tools to low-resource and Indigenous languages via multilingual embeddings.</p>
+        </div>
+        <div class="card fcard">
+          <h3>Human-AI Feedback Loops</h3>
+          <p class="muted">Measure how model outputs shape user behavior, trust, and fairness longitudinally.</p>
+        </div>
+        <div class="card fcard">
+          <h3>Ethics-Integrated Pretraining</h3>
+          <p class="muted">Multi-objective pretraining aligned with GDPR / EU AI Act for regulation-ready AI.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="muted small">© <span id="year"></span> Shera Potka · <a href="/">Home</a></div>
+    </footer>
+  </div>
+
+  <!-- Accessible lightbox -->
+  <dialog id="lightbox" aria-label="Image preview">
+    <img class="lightbox-img" src="" alt="">
+    <div class="lightbox-bar">
+      <button class="btn ghost" id="closeBox" aria-label="Close image">Close</button>
+      <span class="muted small">Click outside or press Esc to dismiss</span>
+    </div>
+  </dialog>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // simple lightbox
+    const dlg = document.getElementById('lightbox');
+    const imgEl = dlg.querySelector('.lightbox-img');
+    const closeBtn = document.getElementById('closeBox');
+    document.querySelectorAll('.gallery img').forEach(img=>{
+      img.addEventListener('click', ()=>{
+        imgEl.src = img.dataset.full || img.src;
+        imgEl.alt = img.alt || "";
+        if (!dlg.open) dlg.showModal();
+      });
+    });
+    closeBtn.addEventListener('click', ()=> dlg.close());
+    dlg.addEventListener('click', (e)=>{
+      // close when clicking backdrop (outside the image area)
+      const rect = imgEl.getBoundingClientRect();
+      const inImage = e.clientX >= rect.left && e.clientX <= rect.right &&
+                      e.clientY >= rect.top  && e.clientY <= rect.bottom;
+      if (!inImage) dlg.close();
+    });
+  </script>
+</body>
+</html>
