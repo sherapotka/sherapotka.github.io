@@ -1,131 +1,136 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light">
   <title>Shera Potka — Fairness • Bias • Privacy in AI</title>
   <meta name="description" content="Instructor & Researcher (UVic). I teach Data Models & Algorithms and study fairness in recommenders, bias in LLMs, and privacy‑preserving NLP. I build methods that elevate minority visibility, measure/mitigate embedding bias, and sanitize text with differential privacy. Seeking a professor role with a research‑led teaching agenda." />
+  <link rel="canonical" href="https://sherapotka.example/" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Shera Potka — Fairness • Bias • Privacy in AI" />
   <meta property="og:description" content="PhD researcher & educator in algorithmic fairness, LLM bias, and privacy‑preserving NLP." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="SheraPotka.png" />
-  <meta property="og:url" content="https://sherapotka.example" />
+  <meta property="og:image" content="/assets/SheraPotka.png" />
+  <meta property="og:url" content="https://sherapotka.example/" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="preload" href="SheraPotka.png" as="image" fetchpriority="high" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="preload" href="/assets/SheraPotka.png" as="image" fetchpriority="high" />
+
   <style>
+    /* ===== Design tokens ===== */
     :root{
-      --bg: #000;
-      --panel: #0f0f0f;
-      --text: #fff;
-      --muted: #bfbfbf;
-      --accent: #000; /* used only in light mode */
-      --ring: #2a2a2a;
-      --shadow: 0 10px 30px rgba(0,0,0,.4);
+      --bg: #0b0b0b;
+      --panel: #0f0f10;
+      --text: #fafafa;
+      --muted: #b8b8b8;
+      --ring: #2a2a2e;
       --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --link-underline-offset: 2px;
     }
-    @media (prefers-color-scheme: light) {
-      :root{ --bg:#fff; --panel:#fff; --text:#000; --muted:#666; --ring:#e5e5e5; --accent:#000; }
-      header.nav{
-      position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(8px);
-      background:rgba(0,0,0,.6);
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#ffffff; --panel:#ffffff; --text:#0b0b0b; --muted:#666; --ring:#e7e7e9; }
     }
-    @media (prefers-color-scheme: light){ header.nav{ background:rgba(255,255,255,.7);} }
+
+    /* Graceful header background across browsers */
+    header.nav{ position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(8px); }
+    @supports (background: color-mix(in oklab, white 90%, black 10%)){
+      header.nav{ background: color-mix(in oklab, var(--bg) 85%, black 15%); }
+      @media (prefers-color-scheme: light){ header.nav{ background: color-mix(in oklab, var(--bg) 85%, white 15%); } }
     }
-      header.nav{ box-shadow: 0 1px 0 var(--ring); }
+    @supports not (background: color-mix(in oklab, white 90%, black 10%)){
+      header.nav{ background: rgba(0,0,0,.6); }
+      @media (prefers-color-scheme: light){ header.nav{ background: rgba(255,255,255,.7); } }
     }
-    *{ box-sizing: border-box; }
-    html,body{
-      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color:var(--text); background:var(--bg);
-      line-height:1.6;
-    }
+
+    /* ===== Base ===== */
+    *,*::before,*::after{ box-sizing:border-box }
+    html,body{ height:100% }
+    html{ scroll-behavior:smooth }
     body{
       margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color:var(--text); background:radial-gradient(1000px 600px at 10% -10%, rgba(122,162,255,.18), transparent 60%),
-             radial-gradient(1200px 800px at 90% -20%, rgba(167,139,250,.12), transparent 60%), var(--bg);
+      color:var(--text);
+      background:
+        radial-gradient(1000px 600px at 10% -10%, rgba(122,162,255,.18), transparent 60%),
+        radial-gradient(1200px 800px at 90% -20%, rgba(167,139,250,.12), transparent 60%),
+        var(--bg);
       line-height:1.6;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
     }
-    a{ color:inherit; text-decoration:underline; text-underline-offset:2px; }
-    a:hover{ text-decoration:underline; }
+    a{ color:inherit; text-decoration:underline; text-underline-offset:var(--link-underline-offset); }
+    a:hover{ text-decoration-thickness: from-font; }
+    a:focus-visible, .btn:focus-visible, button:focus-visible{ outline: 2px solid #7aa2ff; outline-offset: 2px; border-radius: 8px; }
+    img{ max-width:100%; height:auto; }
     .container{ width:min(1100px, 92%); margin-inline:auto; }
-    .visually-hidden{ position:absolute; width:1px; height:1px; margin:-1px; padding:0; border:0; clip:rect(0 0 0 0); overflow:hidden; }
+    .visually-hidden{ position:absolute; width:1px; height:1px; margin:-1px; padding:0; border:0; clip:rect(0 0 0 0); overflow:hidden; white-space:nowrap }
 
-
-    <style id="bw-overrides">
-  :root{ --bg:#ffffff; --panel:#ffffff; --text:#000000; --muted:#555555; --ring:#e5e5e5; --radius:16px; }
-  body{ background:#ffffff !important; color:#000 !important; }
-  a{ color:inherit !important; text-decoration:underline; text-underline-offset:2px; }
-  .btn, .btn.ghost{ all:unset; cursor:pointer; text-decoration:underline; }
-  .cta, .quick{ display:none !important; }
-  /* Let the hero image stay in color even in this mode */
-  .hero-photo img{ filter:none !important; }
-  header.nav{ background:#ffffff !important; }
-</style>
-
-
-    
-    /* Header */
-    header.nav{
-      position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(8px);
-      background:color-mix(in oklab, var(--bg) 85%, black 15%);
-    }
+    /* ===== Header ===== */
+    header.nav{ box-shadow: 0 1px 0 var(--ring); }
     header.nav .wrap{ display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:14px 0; }
     .brand{ font-weight:700; letter-spacing:.2px; color:var(--text); }
     nav.links{ display:flex; align-items:center; gap:.9rem; }
-    .btn{ display:inline-block; padding:.6rem .9rem; border-radius:999px; background:#fff; color:#000; font-weight:600; box-shadow:var(--shadow); border:1px solid #fff; }
-    @media (prefers-color-scheme: light){ .btn{ background:#000; color:#fff; border-color:#000; } }
-    .btn.ghost{ background:transparent; color:var(--text); border:1px solid var(--text); box-shadow:none; }
+    .menu-toggle{ display:none; align-items:center; gap:.45rem; border:1px solid var(--ring); border-radius:999px; padding:.45rem .7rem; background:transparent; color:var(--text); }
 
-    /* Hero */
+    /* Buttons */
+    .btn{ display:inline-block; padding:.6rem .9rem; border-radius:999px; background:#fff; color:#000; font-weight:650; box-shadow:var(--shadow); border:1px solid #fff; text-decoration:none }
+    .btn.ghost{ background:transparent; color:var(--text); border:1px solid var(--text); box-shadow:none; }
+    @media (prefers-color-scheme: light){ .btn{ background:#000; color:#fff; border-color:#000; } }
+
+    /* ===== Hero ===== */
     .hero{ display:grid; grid-template-columns: 1.2fr .9fr; gap:2rem; align-items:center; padding:clamp(32px, 6vw, 72px) 0 24px; }
     .hero h1{ font-size:clamp(28px, 5vw, 52px); line-height:1.1; margin:0 0 .6rem; letter-spacing:.2px; }
     .hero p{ margin:0 0 1.2rem; color:var(--muted); font-size:clamp(16px, 1.6vw, 18px); }
     .cta{ display:flex; gap:.8rem; flex-wrap:wrap; }
     .quick{ display:flex; gap:.6rem; margin-top:.8rem; }
-    .quick a{ padding:.4rem .7rem; border-radius:999px; border:1px solid var(--ring); color:var(--text); }
+    .quick a{ padding:.4rem .7rem; border-radius:999px; border:1px solid var(--ring); color:var(--text); text-decoration:none }
 
     .hero-photo{ justify-self:end; position:relative; }
-    .hero-photo img{ width:min(440px, 42vw); max-width:100%; height:auto; border-radius:var(--radius); display:block; box-shadow:var(--shadow); border:1px solid var(--ring); background:var(--panel); filter:grayscale(100%); }
+    .hero-photo img{ width:min(440px, 42vw); border-radius:var(--radius); display:block; box-shadow:var(--shadow); border:1px solid var(--ring); background:var(--panel); filter:grayscale(100%); }
 
-    /* Sections */
+    /* ===== Sections ===== */
     section{ padding:40px 0; }
     h2{ font-size:clamp(22px, 2.6vw, 32px); margin:0 0 16px; }
 
-    /* Cards */
+    /* ===== Cards ===== */
     .cards{ display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; }
-    .card{ background:var(--panel); padding:18px; border:1px solid var(--ring); border-radius:var(--radius); transition:transform .18s ease, box-shadow .18s ease; color:inherit; }
-    .card:hover{ transform:translateY(-2px); box-shadow:var(--shadow); text-decoration:none; }
+    .card{ background:var(--panel); padding:18px; border:1px solid var(--ring); border-radius:var(--radius); transition:transform .18s ease, box-shadow .18s ease; color:inherit; text-decoration:none }
+    .card:hover{ transform:translateY(-2px); box-shadow:var(--shadow); }
     .card h3{ margin:.2rem 0 .2rem; font-size:1.05rem; }
     .card p{ margin:.2rem 0 0; color:var(--muted); }
 
-    /* Publications */
+    /* ===== Publications ===== */
     .pubs{ list-style:none; margin:0; padding:0; display:grid; gap:14px; }
     .pub{ background:var(--panel); border:1px solid var(--ring); border-radius:var(--radius); padding:16px; display:grid; gap:4px; }
     .pub .meta{ display:flex; flex-wrap:wrap; gap:.6rem; color:var(--muted); font-size:.95rem; }
     .pub .title{ font-weight:600; }
     .pub .links{ margin-top:.3rem; display:flex; gap:.6rem; }
 
-    /* Timeline */
+    /* ===== Timeline ===== */
     .timeline{ list-style:none; margin:0; padding:0; display:grid; gap:18px; }
     .item{ background:var(--panel); border:1px solid var(--ring); border-radius:var(--radius); padding:16px; }
     .row{ display:flex; justify-content:space-between; gap:10px; font-weight:600; }
     .org{ color:var(--muted); margin:.2rem 0 .5rem; }
     .bullets{ margin:.1rem 0 0 1rem; }
 
-    /* Contact */
+    /* ===== Contact ===== */
     .contact{ display:flex; justify-content:space-between; align-items:center; gap:1rem; background:var(--panel); border:1px solid var(--ring); border-radius:var(--radius); padding:16px; }
     .email{ font-weight:700; }
     .muted{ color:var(--muted); font-size:.95rem; }
 
-    /* Footer */
+    /* ===== Footer ===== */
     .footer{ display:flex; justify-content:space-between; align-items:center; gap:.8rem; padding:28px 0 60px; color:var(--muted); font-size:.95rem; border-top:1px solid var(--ring); margin-top:28px; }
     .footer .links{ display:flex; gap:1rem; }
 
-    /* Small screens */
+    /* ===== Reduced motion ===== */
+    @media (prefers-reduced-motion: reduce){
+      *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important }
+    }
+
+    /* ===== Small screens ===== */
     @media (max-width: 900px){
       .hero{ grid-template-columns: 1fr; }
       .hero-photo{ justify-self:start; }
@@ -133,11 +138,22 @@
       .cards{ grid-template-columns: 1fr; }
       .contact{ flex-direction:column; align-items:flex-start; }
       nav.links{ display:none; }
-      .menu-toggle{ display:inline-flex; align-items:center; gap:.45rem; border:1px solid var(--ring); border-radius:999px; padding:.4rem .7rem; background:transparent; color:var(--text); }
+      .menu-toggle{ display:inline-flex; }
       .mobile{ display:flex; flex-direction:column; gap:.6rem; padding:12px; margin-top:8px; border:1px solid var(--ring); border-radius:12px; background:var(--panel); }
-      .mobile a{ padding:.4rem .5rem; border-radius:8px; }
+      .mobile a{ padding:.4rem .5rem; border-radius:8px; text-decoration:none }
+    }
+
+    /* ===== Black & white / print-friendly override ===== */
+    @media print{
+      :root{ --bg:#ffffff; --panel:#ffffff; --text:#000000; --muted:#555555; --ring:#e5e5e5; }
+      body{ background:#fff !important; color:#000 !important; }
+      .hero-photo img{ filter:none !important; }
+      .cta, .quick{ display:none !important; }
+      header.nav{ background:#fff !important; }
     }
   </style>
+
+  <!-- Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -145,58 +161,45 @@
     "name": "Shera Potka",
     "description": "PhD researcher & educator in algorithmic fairness, LLM bias, and privacy‑preserving NLP.",
     "email": "mailto:spotka@uvic.ca",
-    "image": "SheraPotka.png",
+    "image": "/assets/SheraPotka.png",
     "sameAs": [
       "https://github.com/sherapotka",
       "https://www.linkedin.com/in/shera-potka-bb18b22b1/"
     ],
-    "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": "University of Victoria"
-    },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of Victoria" },
     "jobTitle": "Instructor / Researcher"
   }
   </script>
-  <style id="bw-overrides">
-    :root{ --bg:#ffffff; --panel:#ffffff; --text:#000000; --muted:#555555; --ring:#e5e5e5; --radius:16px; }
-    body{ background:#ffffff !important; color:#000 !important; }
-    a{ color:inherit !important; text-decoration:underline; text-underline-offset:2px; }
-    .btn, .btn.ghost{ all:unset; cursor:pointer; text-decoration:underline; }
-    .cta, .quick{ display:none !important; }
-    .hero-photo img{ filter:grayscale(100%); }
-    header.nav{ background:#ffffff !important; }
-  </style>
 </head>
 <body>
   <a class="visually-hidden" href="#main">Skip to content</a>
-  <header class="nav">
+  <header class="nav" role="banner">
     <div class="container wrap">
       <a class="brand" href="/" aria-label="Home">Shera Potka</a>
       <nav class="links" aria-label="Primary">
-        <a href="research.html" target="_blank" rel="noopener">Research</a>
+        <a href="/research.html" target="_blank" rel="noopener">Research</a>
         <a href="#publications">Publications</a>
         <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
-        <a class="btn" href="SheraPotkaCVa.pdf" target="_blank" rel="noopener">CV</a>
+        <a class="btn" href="/assets/SheraPotkaCV.pdf" target="_blank" rel="noopener">CV</a>
       </nav>
-      <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" onclick="toggleMenu()" style="display:none">Menu
-      </button>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
     </div>
     <div id="mobile-nav" class="container mobile" hidden>
-      <a href="research.html" target="_blank" rel="noopener">Research</a>
+      <a href="/research.html" target="_blank" rel="noopener">Research</a>
       <a href="#publications">Publications</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
-      <a class="btn" href="SheraPotkaCVa.pdf" target="_blank" rel="noopener">CV</a>
+      <a class="btn" href="/assets/SheraPotkaCV.pdf" target="_blank" rel="noopener">CV</a>
     </div>
   </header>
 
   <main id="main" class="container">
     <section class="hero" aria-labelledby="tagline">
       <div>
-        <h1 id="tagline">Instructor & Researcher Fairness • Bias • Privacy</h1>
+        <h1 id="tagline">Instructor & Researcher — Fairness • Bias • Privacy</h1>
         <p>I teach Data Models &amp; Algorithms and conduct research on algorithmic fairness, bias in large language models, and privacy‑preserving NLP. My aim is to build rigorous, deployable methods that make AI systems more equitable and trustworthy.</p>
-        <div class="cta">
+        <div class="cta" role="group" aria-label="Primary calls to action">
           <a class="btn" href="#publications">View Publications</a>
           <a class="btn ghost" href="mailto:spotka@uvic.ca">Contact</a>
         </div>
@@ -207,30 +210,30 @@
         </div>
       </div>
       <div class="hero-photo">
-        <img src="SheraPotka.png" alt="Portrait of Shera Potka" loading="eager" decoding="async" />
+        <img src="/assets/SheraPotka.png" alt="Portrait of Shera Potka" loading="eager" decoding="async"
+             srcset="/assets/SheraPotka-320.png 320w, /assets/SheraPotka-640.png 640w, /assets/SheraPotka.png 960w"
+             sizes="(max-width: 900px) 92vw, 440px" />
       </div>
     </section>
 
- 
+    <section aria-labelledby="research-heading">
       <h2 id="research-heading">Research Focus</h2>
       <div class="cards">
-        <!-- TODO: Replace placeholder links with your research pages -->
-        <a class="card" href="research.html#fairness" target="_blank" rel="noopener noreferrer" aria-label="Open Fairness section in Research (new tab)">
+        <a class="card" href="/research.html#fairness" target="_blank" rel="noopener noreferrer" aria-label="Open Fairness section in Research (new tab)">
           <h3>Fairness in Social Recommenders</h3>
           <p>Improving minority visibility and mitigating popularity bias while preserving utility.</p>
         </a>
-        <a class="card" href="research.html#llm-bias" target="_blank" rel="noopener noreferrer" aria-label="Open LLM Bias section in Research (new tab)">
+        <a class="card" href="/research.html#llm-bias" target="_blank" rel="noopener noreferrer" aria-label="Open LLM Bias section in Research (new tab)">
           <h3>Bias in Large Language Models</h3>
           <p>Measuring gender &amp; race bias in embeddings and contextual models (e.g., SC‑WEAT).</p>
         </a>
-        <a class="card" href="research.html#privacy" target="_blank" rel="noopener noreferrer" aria-label="Open Privacy section in Research (new tab)">
+        <a class="card" href="/research.html#privacy" target="_blank" rel="noopener noreferrer" aria-label="Open Privacy section in Research (new tab)">
           <h3>Privacy in NLP</h3>
           <p>Differentially private text sanitization that maintains semantic coherence (e.g., CluSanT).</p>
         </a>
       </div>
     </section>
 
-    
     <section id="teaching" aria-labelledby="teaching-heading">
       <h2 id="teaching-heading">Teaching</h2>
       <div class="cards">
@@ -248,11 +251,10 @@
         </div>
       </div>
       <div class="cta" style="margin-top:12px">
-        <a class="btn" href="teaching-statement.pdf" target="_blank" rel="noopener">Teaching Statement</a>
+        <a class="btn" href="/assets/teaching-statement.pdf" target="_blank" rel="noopener">Teaching Statement</a>
         <a class="btn ghost" href="mailto:spotka@uvic.ca?subject=Teaching%20Collaboration">Invite for a guest lecture</a>
       </div>
     </section>
-
 
     <section id="publications" aria-labelledby="pubs-heading">
       <h2 id="pubs-heading">Selected Publications</h2>
@@ -324,7 +326,7 @@
           <div class="email">spotka@uvic.ca</div>
           <div class="muted">Victoria, BC · Open to collaborations, teaching, and research partnerships</div>
         </div>
-        <div class="contact-links">
+        <div class="contact-links" role="group" aria-label="Contact links">
           <a class="btn" href="mailto:spotka@uvic.ca">Email</a>
           <a class="btn ghost" href="https://www.linkedin.com/in/shera-potka-bb18b22b1/" target="_blank" rel="noopener">LinkedIn</a>
           <a class="btn ghost" href="https://github.com/sherapotka" target="_blank" rel="noopener">GitHub</a>
@@ -336,25 +338,37 @@
       <div>© <span id="year"></span> Shera Potka</div>
       <div class="links">
         <a href="#publications">Publications</a>
-        <a href="research.html" target="_blank" rel="noopener">Research</a>
-        <a href="SheraPotkaCVa.pdf" target="_blank" rel="noopener">CV</a>
+        <a href="/research.html" target="_blank" rel="noopener">Research</a>
+        <a href="/assets/SheraPotkaCV.pdf" target="_blank" rel="noopener">CV</a>
       </div>
     </footer>
   </main>
 
   <script>
+    // Replace no-js class
+    document.documentElement.classList.remove('no-js');
+
+    // Year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
-    function toggleMenu(){
+
+    // Mobile menu toggle (accessible)
+    (function(){
       const btn = document.querySelector('.menu-toggle');
       const nav = document.getElementById('mobile-nav');
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!expanded));
-      nav.hidden = expanded;
-    }
-    // Reveal mobile menu button only on small screens (avoids FOUC)
-    const mq = window.matchMedia('(max-width: 900px)');
-    const setBtn = () => { document.querySelector('.menu-toggle').style.display = mq.matches ? 'inline-flex' : 'none'; };
-    mq.addEventListener('change', setBtn); setBtn();
+      function toggle(){
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        nav.hidden = expanded;
+        if (!expanded) { nav.querySelector('a')?.focus(); }
+      }
+      btn.addEventListener('click', toggle);
+      btn.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggle(); } });
+
+      // Show/hide button based on viewport without FOUC
+      const mq = window.matchMedia('(max-width: 900px)');
+      const setBtn = () => { btn.style.display = mq.matches ? 'inline-flex' : 'none'; if(!mq.matches){ nav.hidden = true; btn.setAttribute('aria-expanded','false'); } };
+      mq.addEventListener('change', setBtn); setBtn();
+    })();
   </script>
 </body>
 </html>
