@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark light">
   <title>Shera Potka — Fairness • Bias • Privacy in AI</title>
-  <meta name="description" content="Instructor & Researcher (UVic). I teach Data Models & Algorithms and study fairness in recommenders, bias in LLMs, and privacy‑preserving NLP. I build methods that elevate minority visibility, measure/mitigate embedding bias, and sanitize text with differential privacy. Seeking a professor role with a research‑led teaching agenda." />
+  <meta name="author" content="Shera Potka" />
+  <meta name="description" content="Instructor & Researcher (UVic). Research areas: algorithmic fairness in social recommenders, bias in large language models, and privacy‑preserving NLP. Methods: minority visibility in link recommendations, bias measurement/mitigation for embeddings and contextual models, and differentially private text sanitization." />
   <link rel="canonical" href="https://sherapotka.example/" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Shera Potka — Fairness • Bias • Privacy in AI" />
   <meta property="og:description" content="PhD researcher & educator in algorithmic fairness, LLM bias, and privacy‑preserving NLP." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="/assets/SheraPotka.png" />
+  <meta property="og:image" content="SheraPotka.png" />
   <meta property="og:url" content="https://sherapotka.example/" />
   <meta name="twitter:card" content="summary_large_image" />
 
@@ -72,13 +73,15 @@
     /* ===== Hero ===== */
     .hero{ display:grid; grid-template-columns: 1.2fr .9fr; gap:2rem; align-items:center; padding:clamp(32px, 6vw, 72px) 0 24px; }
     .hero h1{ font-size:clamp(28px, 5vw, 52px); line-height:1.1; margin:0 0 .6rem; letter-spacing:.2px; }
-    .hero p{ margin:0 0 1.2rem; color:var(--muted); font-size:clamp(16px, 1.6vw, 18px); }
+    .hero p{ margin:.4rem 0 1.2rem; color:var(--muted); font-size:clamp(16px, 1.6vw, 18px); }
     .cta{ display:flex; gap:.8rem; flex-wrap:wrap; }
     .quick{ display:flex; gap:.6rem; margin-top:.8rem; }
     .quick a{ padding:.4rem .7rem; border-radius:999px; border:1px solid var(--ring); color:var(--text); text-decoration:none }
 
     .hero-photo{ justify-self:end; position:relative; }
-    .hero-photo img{ width:min(440px, 42vw); border-radius:var(--radius); display:block; box-shadow:var(--shadow); border:1px solid var(--ring); background:var(--panel); /* IMPORTANT: keep image color */ filter:none !important; }
+    .hero-photo img{ width:min(440px, 42vw); border-radius:var(--radius); display:block; box-shadow:var(--shadow); border:1px solid var(--ring); background:var(--panel); filter:none !important; }
+    .hero-photo figure{ margin:0; }
+    .hero-photo figcaption{ color:var(--muted); font-size:.9rem; margin-top:.4rem; }
 
     /* ===== Sections ===== */
     main section{ padding:40px 0; }
@@ -143,7 +146,7 @@
     }
   </style>
 
-  <!-- Schema.org -->
+  <!-- Schema.org: Person + ItemList for publications -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -156,8 +159,13 @@
       "https://github.com/sherapotka",
       "https://www.linkedin.com/in/shera-potka-bb18b22b1/"
     ],
-    "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of Victoria" },
-    "jobTitle": "Instructor / Researcher"
+    "alumniOf": [
+      {"@type": "CollegeOrUniversity", "name": "University of Victoria"},
+      {"@type": "CollegeOrUniversity", "name": "University of Cologne"}
+    ],
+    "affiliation": {"@type": "CollegeOrUniversity", "name": "University of Victoria"},
+    "jobTitle": "Instructor / Researcher",
+    "worksFor": {"@type": "CollegeOrUniversity", "name": "University of Victoria"}
   }
   </script>
 </head>
@@ -167,20 +175,20 @@
     <div class="container wrap">
       <a class="brand" href="/" aria-label="Home">Shera Potka</a>
       <nav class="links" aria-label="Primary">
-        <a href="/research.html" target="_blank" rel="noopener">Research</a>
+        <a href="/research.html" target="_blank" rel="noopener noreferrer">Research</a>
         <a href="#publications">Publications</a>
         <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
-        <a href="/assets/SheraPotkaCV.pdf"$1>CV</a>
+        <a href="/assets/SheraPotkaCV.pdf" target="_blank" rel="noopener noreferrer" download>CV</a>
       </nav>
-      <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">Menu</button>
     </div>
-    <div id="mobile-nav" class="container mobile" hidden>
-      <a href="/research.html" target="_blank" rel="noopener">Research</a>
+    <div id="mobile-nav" class="container mobile" hidden role="navigation" aria-label="Mobile">
+      <a href="/research.html" target="_blank" rel="noopener noreferrer">Research</a>
       <a href="#publications">Publications</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
-      <a href="/assets/SheraPotkaCV.pdf"$1>CV</a>
+      <a href="/assets/SheraPotkaCV.pdf" target="_blank" rel="noopener noreferrer" download>CV</a>
     </div>
   </header>
 
@@ -188,12 +196,13 @@
     <section class="hero" aria-labelledby="intro-heading">
       <div>
         <h1 id="intro-heading">Fairness • Bias • Privacy in AI</h1>
-        <p>Instructor & Researcher (UVic). I teach Data Models & Algorithms and study fairness in recommenders, bias in LLMs, and privacy‑preserving NLP. I build methods that elevate minority visibility, measure/mitigate embedding bias, and sanitize text with differential privacy.</p>
-        
-        
+        <p>Instructor &amp; researcher at the University of Victoria. My work advances <strong>algorithmic fairness</strong> in social recommenders, quantifies and mitigates <strong>bias</strong> in word and contextual <strong>language model</strong> representations, and develops <strong>privacy‑preserving NLP</strong> methods. I design algorithms that elevate minority visibility in link recommendations, build measurement frameworks for embedding bias (e.g., SC‑WEAT), and create differentially private text sanitization techniques that preserve semantic coherence.</p>
       </div>
       <div class="hero-photo">
-        <img src="/assets/SheraPotka.png" alt="Portrait of Shera Potka" width="440" height="528" />
+        <figure>
+          <img src="/assets/SheraPotka.png" alt="Portrait of Shera Potka" width="440" height="528" />
+          <figcaption>Figure 1. Author portrait: <span itemprop="name">Shera Potka</span>.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -202,7 +211,7 @@
       <div class="cards">
         <a class="card" href="/research.html#fairness" target="_blank" rel="noopener noreferrer" aria-label="Open Fairness section in Research (new tab)">
           <h3>Fairness in Social Recommenders</h3>
-          <p>Improving minority visibility and mitigating popularity bias while preserving utility.</p>
+          <p>Minority visibility and popularity‑bias mitigation with minimal utility loss.</p>
         </a>
         <a class="card" href="/research.html#llm-bias" target="_blank" rel="noopener noreferrer" aria-label="Open LLM Bias section in Research (new tab)">
           <h3>Bias in Large Language Models</h3>
@@ -210,7 +219,7 @@
         </a>
         <a class="card" href="/research.html#privacy" target="_blank" rel="noopener noreferrer" aria-label="Open Privacy section in Research (new tab)">
           <h3>Privacy in NLP</h3>
-          <p>Differentially private text sanitization that maintains semantic coherence (e.g., CluSanT).</p>
+          <p>Differentially private text sanitization with semantic fidelity (e.g., CluSanT).</p>
         </a>
       </div>
     </section>
@@ -220,7 +229,7 @@
       <div class="cards">
         <div class="card">
           <h3>Data Models &amp; Algorithms (Instructor)</h3>
-          <p>Active‑learning lectures, rigor with proofs, and implementation‑ready pseudocode. Topics: asymptotics, graphs, greedy, divide‑and‑conquer, DP, reductions, NP‑completeness.</p>
+          <p>Active‑learning lectures; rigor with proofs; implementation‑ready pseudocode. Topics: asymptotics, graphs, greedy, divide‑and‑conquer, DP, reductions, NP‑completeness.</p>
         </div>
         <div class="card">
           <h3>Data Mining (TA / Lead Mentor)</h3>
@@ -228,36 +237,36 @@
         </div>
         <div class="card">
           <h3>Web Design (TA)</h3>
-          <p>Front‑end fundamentals with accessibility, semantic HTML, and modern CSS—project‑based assessment.</p>
+          <p>Front‑end foundations with accessibility, semantic HTML, and modern CSS — project‑based assessment.</p>
         </div>
       </div>
-      
     </section>
 
     <section id="publications" aria-labelledby="pubs-heading">
       <h2 id="pubs-heading">Selected Publications</h2>
-      <ul class="pubs">
-        <li class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
+      <ul class="pubs" itemscope itemtype="https://schema.org/ItemList">
+        <meta itemprop="name" content="Selected Publications by Shera Potka"/>
+        <li class="pub" itemprop="itemListElement" itemscope itemtype="https://schema.org/ScholarlyArticle">
           <span class="title" itemprop="name">Community Structure and Coherence in Digital Humanities Works</span>
           <div class="meta"><span class="venue" itemprop="isPartOf">IISA 2023</span> — <em>Best Paper Award</em></div>
           <div class="links"><a class="pub-link" href="https://ieeexplore.ieee.org/document/10345939" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
         </li>
-        <li class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
+        <li class="pub" itemprop="itemListElement" itemscope itemtype="https://schema.org/ScholarlyArticle">
           <span class="title" itemprop="name">Enhancing Structural Minority Visibility in Link Recommendations (MinWalk)</span>
           <div class="meta"><span class="venue" itemprop="isPartOf">MEDES 2024</span> — <em>Best Paper Award</em></div>
           <div class="links"><a class="pub-link" href="https://www.researchgate.net/publication/393752947_Enhancing_Structural_Minority_Visibility_in_Link_Recommendations" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
         </li>
-        <li class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
+        <li class="pub" itemprop="itemListElement" itemscope itemtype="https://schema.org/ScholarlyArticle">
           <span class="title" itemprop="name">Word Embedding Bias in Large Language Models</span>
           <div class="meta"><span class="venue" itemprop="isPartOf">I‑SPAN 2025</span></div>
           <div class="links"><a class="pub-link" href="https://link.springer.com/content/pdf/10.1007/978-981-96-6294-4_20.pdf" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
         </li>
-        <li class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
+        <li class="pub" itemprop="itemListElement" itemscope itemtype="https://schema.org/ScholarlyArticle">
           <span class="title" itemprop="name">Gender &amp; Race Bias in Consumer Product Recommendations</span>
           <div class="meta"><span class="venue" itemprop="isPartOf">AINA 2025</span></div>
           <div class="links"><a class="pub-link" href="https://www.researchgate.net/publication/390751836_Gender_and_Race_Bias_in_Consumer_Product_Recommendations_by_Large_Language_Models" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
         </li>
-        <li class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
+        <li class="pub" itemprop="itemListElement" itemscope itemtype="https://schema.org/ScholarlyArticle">
           <span class="title" itemprop="name">CluSanT: Differentially Private and Semantically Coherent Text Sanitization</span>
           <div class="meta"><span class="venue" itemprop="isPartOf">NAACL 2025</span></div>
           <div class="links"><a class="pub-link" href="https://aclanthology.org/2025.naacl-long.187/" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
@@ -313,7 +322,7 @@
       <div class="links">
         <a href="#publications">Publications</a>
         <a href="/research.html" target="_blank" rel="noopener">Research</a>
-        <a href="/assets/SheraPotkaCV.pdf" target="_blank" rel="noopener">CV</a>
+        <a href="/assets/SheraPotkaCV.pdf" target="_blank" rel="noopener" download>CV</a>
       </div>
     </footer>
   </main>
@@ -346,3 +355,4 @@
   </script>
 </body>
 </html>
+
