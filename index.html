@@ -17,33 +17,22 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="icon" href="/favicon.ico" sizes="any" />
-  <link rel="preload" href="/SheraPotka.png" as="image" fetchpriority="high" />
+  <link rel="preload" href="/assets/SheraPotka.png" as="image" fetchpriority="high" />
 
   <style>
-    /* ===== Design tokens ===== */
+    /* ===== Design tokens: strictly black & white (images keep color) ===== */
     :root{
-      --bg: #0b0b0b;
-      --panel: #0f0f10;
+      --bg: #0a0a0a;
+      --panel: #0f0f0f;
       --text: #fafafa;
-      --muted: #b8b8b8;
-      --ring: #2a2a2e;
+      --muted: #a8a8a8;
+      --ring: #262626;
       --radius: 16px;
       --shadow: 0 10px 30px rgba(0,0,0,.35);
       --link-underline-offset: 2px;
     }
     @media (prefers-color-scheme: light){
-      :root{ --bg:#ffffff; --panel:#ffffff; --text:#0b0b0b; --muted:#666; --ring:#e7e7e9; }
-    }
-
-    /* Graceful header background across browsers */
-    header.nav{ position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(8px); }
-    @supports (background: color-mix(in oklab, white 90%, black 10%)){
-      header.nav{ background: color-mix(in oklab, var(--bg) 85%, black 15%); }
-      @media (prefers-color-scheme: light){ header.nav{ background: color-mix(in oklab, var(--bg) 85%, white 15%); } }
-    }
-    @supports not (background: color-mix(in oklab, white 90%, black 10%)){
-      header.nav{ background: rgba(0,0,0,.6); }
-      @media (prefers-color-scheme: light){ header.nav{ background: rgba(255,255,255,.7); } }
+      :root{ --bg:#ffffff; --panel:#ffffff; --text:#0b0b0b; --muted:#555555; --ring:#e6e6e6; }
     }
 
     /* ===== Base ===== */
@@ -51,33 +40,33 @@
     html,body{ height:100% }
     html{ scroll-behavior:smooth }
     body{
-      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
       color:var(--text);
-      background:
-        radial-gradient(1000px 600px at 10% -10%, rgba(122,162,255,.18), transparent 60%),
-        radial-gradient(1200px 800px at 90% -20%, rgba(167,139,250,.12), transparent 60%),
-        var(--bg);
+      background: var(--bg);
       line-height:1.6;
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
     }
-    a{ color:inherit; text-decoration:underline; text-underline-offset:var(--link-underline-offset); }
-    a:hover{ text-decoration-thickness: from-font; }
-    a:focus-visible, .btn:focus-visible, button:focus-visible{ outline: 2px solid #7aa2ff; outline-offset: 2px; border-radius: 8px; }
+    a{ color:inherit; text-decoration:underline; text-underline-offset:var(--link-underline-offset); text-decoration-thickness: 1px; }
+    a:hover{ text-decoration-style: solid; text-decoration-thickness: 2px; }
+    a:focus-visible, .btn:focus-visible, button:focus-visible{ outline: 2px dashed currentColor; outline-offset: 3px; border-radius: 8px; }
     img{ max-width:100%; height:auto; }
     .container{ width:min(1100px, 92%); margin-inline:auto; }
     .visually-hidden{ position:absolute; width:1px; height:1px; margin:-1px; padding:0; border:0; clip:rect(0 0 0 0); overflow:hidden; white-space:nowrap }
 
     /* ===== Header ===== */
-    header.nav{ box-shadow: 0 1px 0 var(--ring); }
+    header.nav{ position:sticky; top:0; z-index:50; background:rgba(0,0,0,.6); box-shadow: 0 1px 0 var(--ring); backdrop-filter:saturate(120%) blur(8px); }
+    @media (prefers-color-scheme: light){ header.nav{ background:rgba(255,255,255,.75); }}
     header.nav .wrap{ display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:14px 0; }
-    .brand{ font-weight:700; letter-spacing:.2px; color:var(--text); }
+    .brand{ font-weight:800; letter-spacing:.2px; color:var(--text); text-decoration:none; }
     nav.links{ display:flex; align-items:center; gap:.9rem; }
     .menu-toggle{ display:none; align-items:center; gap:.45rem; border:1px solid var(--ring); border-radius:999px; padding:.45rem .7rem; background:transparent; color:var(--text); }
 
-    /* Buttons */
-    .btn{ display:inline-block; padding:.6rem .9rem; border-radius:999px; background:#fff; color:#000; font-weight:650; box-shadow:var(--shadow); border:1px solid #fff; text-decoration:none }
-    .btn.ghost{ background:transparent; color:var(--text); border:1px solid var(--text); box-shadow:none; }
+    /* ===== Buttons (monochrome only) ===== */
+    .btn{ display:inline-block; padding:.6rem .9rem; border-radius:999px; background:#fff; color:#000; font-weight:700; box-shadow:var(--shadow); border:1px solid #fff; text-decoration:none; }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn.ghost{ background:transparent; color:var(--text); border:1px solid currentColor; box-shadow:none; }
     @media (prefers-color-scheme: light){ .btn{ background:#000; color:#fff; border-color:#000; } }
 
     /* ===== Hero ===== */
@@ -89,10 +78,10 @@
     .quick a{ padding:.4rem .7rem; border-radius:999px; border:1px solid var(--ring); color:var(--text); text-decoration:none }
 
     .hero-photo{ justify-self:end; position:relative; }
-    .hero-photo img{ width:min(440px, 42vw); border-radius:var(--radius); display:block; box-shadow:var(--shadow); border:1px solid var(--ring); background:var(--panel); filter:grayscale(100%); }
+    .hero-photo img{ width:min(440px, 42vw); border-radius:var(--radius); display:block; box-shadow:var(--shadow); border:1px solid var(--ring); background:var(--panel); /* IMPORTANT: keep image color */ filter:none !important; }
 
     /* ===== Sections ===== */
-    section{ padding:40px 0; }
+    main section{ padding:40px 0; }
     h2{ font-size:clamp(22px, 2.6vw, 32px); margin:0 0 16px; }
 
     /* ===== Cards ===== */
@@ -112,13 +101,13 @@
     /* ===== Timeline ===== */
     .timeline{ list-style:none; margin:0; padding:0; display:grid; gap:18px; }
     .item{ background:var(--panel); border:1px solid var(--ring); border-radius:var(--radius); padding:16px; }
-    .row{ display:flex; justify-content:space-between; gap:10px; font-weight:600; }
+    .row{ display:flex; justify-content:space-between; gap:10px; font-weight:700; }
     .org{ color:var(--muted); margin:.2rem 0 .5rem; }
     .bullets{ margin:.1rem 0 0 1rem; }
 
     /* ===== Contact ===== */
     .contact{ display:flex; justify-content:space-between; align-items:center; gap:1rem; background:var(--panel); border:1px solid var(--ring); border-radius:var(--radius); padding:16px; }
-    .email{ font-weight:700; }
+    .email{ font-weight:800; }
     .muted{ color:var(--muted); font-size:.95rem; }
 
     /* ===== Footer ===== */
@@ -143,13 +132,14 @@
       .mobile a{ padding:.4rem .5rem; border-radius:8px; text-decoration:none }
     }
 
-    /* ===== Black & white / print-friendly override ===== */
+    /* ===== Print-friendly override ===== */
     @media print{
       :root{ --bg:#ffffff; --panel:#ffffff; --text:#000000; --muted:#555555; --ring:#e5e5e5; }
       body{ background:#fff !important; color:#000 !important; }
       .hero-photo img{ filter:none !important; }
       .cta, .quick{ display:none !important; }
-      header.nav{ background:#fff !important; }
+      header.nav{ background:#fff !important; box-shadow:none !important; }
+      .btn, .btn.ghost{ border:1px solid #000 !important; color:#000 !important; background:#fff !important; box-shadow:none !important; }
     }
   </style>
 
@@ -194,8 +184,25 @@
     </div>
   </header>
 
-
-    
+  <main id="main" role="main" class="container">
+    <section class="hero" aria-labelledby="intro-heading">
+      <div>
+        <h1 id="intro-heading">Fairness • Bias • Privacy in AI</h1>
+        <p>Instructor & Researcher (UVic). I teach Data Models & Algorithms and study fairness in recommenders, bias in LLMs, and privacy‑preserving NLP. I build methods that elevate minority visibility, measure/mitigate embedding bias, and sanitize text with differential privacy.</p>
+        <div class="cta">
+          <a class="btn" href="/assets/SheraPotkaCV.pdf" target="_blank" rel="noopener">CV</a>
+          <a class="btn ghost" href="#contact">Contact</a>
+        </div>
+        <div class="quick" role="group" aria-label="Quick links">
+          <a href="#teaching">Teaching</a>
+          <a href="#publications">Publications</a>
+          <a href="/research.html" target="_blank" rel="noopener">Research</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="/assets/SheraPotka.png" alt="Portrait of Shera Potka" width="440" height="528" />
+      </div>
+    </section>
 
     <section aria-labelledby="research-heading">
       <h2 id="research-heading">Research Focus</h2>
@@ -223,133 +230,4 @@
           <p>Active‑learning lectures, rigor with proofs, and implementation‑ready pseudocode. Topics: asymptotics, graphs, greedy, divide‑and‑conquer, DP, reductions, NP‑completeness.</p>
         </div>
         <div class="card">
-          <h3>Data Mining (TA / Lead Mentor)</h3>
-          <p>Hands‑on labs in classification, clustering, recommender pipelines, and model evaluation for cohorts up to 180 students.</p>
-        </div>
-        <div class="card">
-          <h3>Web Design (TA)</h3>
-          <p>Front‑end fundamentals with accessibility, semantic HTML, and modern CSS—project‑based assessment.</p>
-        </div>
-      </div>
-      <div class="cta" style="margin-top:12px">
-        <a class="btn" href="/assets/teaching-statement.pdf" target="_blank" rel="noopener">Teaching Statement</a>
-        <a class="btn ghost" href="mailto:spotka@uvic.ca?subject=Teaching%20Collaboration">Invite for a guest lecture</a>
-      </div>
-    </section>
-
-    <section id="publications" aria-labelledby="pubs-heading">
-      <h2 id="pubs-heading">Selected Publications</h2>
-      <ul class="pubs">
-        <li class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
-          <span class="title" itemprop="name">Community Structure and Coherence in Digital Humanities Works</span>
-          <div class="meta"><span class="venue" itemprop="isPartOf">IISA 2023</span> — <em>Best Paper Award</em></div>
-          <div class="links"><a class="pub-link" href="https://ieeexplore.ieee.org/document/10345939" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
-        </li>
-        <li class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
-          <span class="title" itemprop="name">Enhancing Structural Minority Visibility in Link Recommendations (MinWalk)</span>
-          <div class="meta"><span class="venue" itemprop="isPartOf">MEDES 2024</span> — <em>Best Paper Award</em></div>
-          <div class="links"><a class="pub-link" href="https://www.researchgate.net/publication/393752947_Enhancing_Structural_Minority_Visibility_in_Link_Recommendations" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
-        </li>
-        <li class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
-          <span class="title" itemprop="name">Word Embedding Bias in Large Language Models</span>
-          <div class="meta"><span class="venue" itemprop="isPartOf">I‑SPAN 2025</span></div>
-          <div class="links"><a class="pub-link" href="https://link.springer.com/content/pdf/10.1007/978-981-96-6294-4_20.pdf" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
-        </li>
-        <li class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
-          <span class="title" itemprop="name">Gender &amp; Race Bias in Consumer Product Recommendations</span>
-          <div class="meta"><span class="venue" itemprop="isPartOf">AINA 2025</span></div>
-          <div class="links"><a class="pub-link" href="https://www.researchgate.net/publication/390751836_Gender_and_Race_Bias_in_Consumer_Product_Recommendations_by_Large_Language_Models" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
-        </li>
-        <li class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
-          <span class="title" itemprop="name">CluSanT: Differentially Private and Semantically Coherent Text Sanitization</span>
-          <div class="meta"><span class="venue" itemprop="isPartOf">NAACL 2025</span></div>
-          <div class="links"><a class="pub-link" href="https://aclanthology.org/2025.naacl-long.187/" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
-        </li>
-      </ul>
-    </section>
-
-    <section id="experience" aria-labelledby="exp-heading">
-      <h2 id="exp-heading">Experience</h2>
-      <ul class="timeline">
-        <li class="item">
-          <div class="row"><span class="role">Instructor — Data Models &amp; Algorithms</span><span class="time">Jan–Apr 2025</span></div>
-          <div class="org">University of Victoria</div>
-          <ul class="bullets">
-            <li>Interactive lectures with active learning</li>
-            <li>Modern slides, notes, and project resources</li>
-            <li>Mentored teams applying algorithms in projects</li>
-          </ul>
-        </li>
-        <li class="item">
-          <div class="row"><span class="role">Teaching Assistant — Data Mining &amp; Web Design</span><span class="time">2023–2024</span></div>
-          <div class="org">University of Victoria</div>
-          <ul class="bullets">
-            <li>Supported cohorts up to 180 students</li>
-            <li>Designed hands‑on labs and grading rubrics</li>
-            <li>Guided projects in ML and front‑end fundamentals</li>
-          </ul>
-        </li>
-        <li class="item">
-          <div class="row"><span class="role">Software Developer</span><span class="time">Nov 2022 – Nov 2023</span></div>
-          <div class="org">CCEH, University of Cologne</div>
-          <ul class="bullets">
-            <li>Cross‑disciplinary research software</li>
-            <li>RACIR project support (higher‑ed research)</li>
-          </ul>
-        </li>
-      </ul>
-    </section>
-
-    <section id="contact" aria-labelledby="contact-heading">
-      <h2 id="contact-heading">Get in touch</h2>
-      <div class="contact">
-        <div>
-          <div class="email">spotka@uvic.ca</div>
-          <div class="muted">Victoria, BC · Open to collaborations, teaching, and research partnerships</div>
-        </div>
-        <div class="contact-links" role="group" aria-label="Contact links">
-          <a class="btn" href="mailto:spotka@uvic.ca">Email</a>
-          <a class="btn ghost" href="https://www.linkedin.com/in/shera-potka-bb18b22b1/" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn ghost" href="https://github.com/sherapotka" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer" role="contentinfo">
-      <div>© <span id="year"></span> Shera Potka</div>
-      <div class="links">
-        <a href="#publications">Publications</a>
-        <a href="/research.html" target="_blank" rel="noopener">Research</a>
-        <a href="/assets/SheraPotkaCV.pdf" target="_blank" rel="noopener">CV</a>
-      </div>
-    </footer>
-  </main>
-
-  <script>
-    // Replace no-js class
-    document.documentElement.classList.remove('no-js');
-
-    // Year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Mobile menu toggle (accessible)
-    (function(){
-      const btn = document.querySelector('.menu-toggle');
-      const nav = document.getElementById('mobile-nav');
-      function toggle(){
-        const expanded = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', String(!expanded));
-        nav.hidden = expanded;
-        if (!expanded) { nav.querySelector('a')?.focus(); }
-      }
-      btn.addEventListener('click', toggle);
-      btn.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggle(); } });
-
-      // Show/hide button based on viewport without FOUC
-      const mq = window.matchMedia('(max-width: 900px)');
-      const setBtn = () => { btn.style.display = mq.matches ? 'inline-flex' : 'none'; if(!mq.matches){ nav.hidden = true; btn.setAttribute('aria-expanded','false'); } };
-      mq.addEventListener('change', setBtn); setBtn();
-    })();
-  </script>
-</body>
-</html>
+          <h
