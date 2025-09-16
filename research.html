@@ -44,27 +44,20 @@
     }
     .grid{display:grid; gap:18px}
 
-    /* ---------- NEW, NO-CROP GALLERY ---------- */
-    .gallery{
-      display:grid; gap:12px; margin-top:14px;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-    }
-    /* auto-fit to screen sizes */
-    @media (max-width:900px){ .gallery{grid-template-columns:repeat(2, minmax(0,1fr))} }
-    @media (max-width:560px){ .gallery{grid-template-columns:1fr} }
-
+    /* ---------- SINGLE-IMAGE MEDIA BLOCK ---------- */
+    .media{ display:flex; align-items:flex-start; justify-content:center; }
     .frame{
       margin:0; padding:10px;
       background:rgba(255,255,255,.02);
       border:1px solid rgba(148,163,184,.22);
       border-radius:14px;
-      display:flex; flex-direction:column; align-items:center;
+      display:flex; flex-direction:column; align-items:center; width:100%;
     }
     .frame img{
       display:block;
       width:100%;
       height:auto;               /* keeps full image visible */
-      max-height:340px;          /* prevents huge vertical stretch */
+      max-height:420px;          /* prevents huge vertical stretch */
       object-fit:contain;        /* NO CROPPING */
       border-radius:10px;
       cursor:zoom-in;
@@ -151,22 +144,11 @@
             <li>On Twitter &amp; citation graphs: <strong>+35% visibility</strong> for under-represented users with no significant precision loss.</li>
           </ul>
         </div>
-        <div class="card">
-          <div class="gallery">
-            <!-- Replace src with your actual images -->
-            <figure class="frame">
-              <img src="Fairrec.png" alt="Exposure distribution before and after FairRec" loading="lazy" decoding="async" data-full="Fairrec.png">
-              <figcaption>Exposure distribution (before → after)</figcaption>
-            </figure>
-            <figure class="frame">
-              <img src="Fairrec2.png" alt="Minority visibility vs. accuracy trade-off curve" loading="lazy" decoding="async" data-full="Fairrec2.png">
-              <figcaption>Visibility–accuracy trade-off</figcaption>
-            </figure>
-            <figure class="frame">
-              <img src="images/fairrec-3.jpg" alt="Network highlighting improved exposure for minority nodes" loading="lazy" decoding="async" data-full="images/fairrec-3.jpg">
-              <figcaption>Network view: improved exposure</figcaption>
-            </figure>
-          </div>
+        <div class="card media">
+          <figure class="frame">
+            <img src="Fairrec.png" alt="Exposure distribution before and after FairRec" loading="lazy" decoding="async" data-full="Fairrec.png">
+            <figcaption>Exposure distribution (before → after)</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -186,21 +168,11 @@
             <li>Results inform auditing and debiasing for production LLMs.</li>
           </ul>
         </div>
-        <div class="card">
-          <div class="gallery">
-            <figure class="frame">
-              <img src="images/bias-1.jpg" alt="Association strengths across demographic terms" loading="lazy" decoding="async" data-full="images/bias-1.jpg">
-              <figcaption>Association strengths across groups</figcaption>
-            </figure>
-            <figure class="frame">
-              <img src="images/bias-2.jpg" alt="SC-WEAT contextual bias comparison across models" loading="lazy" decoding="async" data-full="images/bias-2.jpg">
-              <figcaption>SC-WEAT across models</figcaption>
-            </figure>
-            <figure class="frame">
-              <img src="images/bias-3.jpg" alt="Frequency-weighted z-scores for gendered terms" loading="lazy" decoding="async" data-full="images/bias-3.jpg">
-              <figcaption>Weighted z-scores (gendered terms)</figcaption>
-            </figure>
-          </div>
+        <div class="card media">
+          <figure class="frame">
+            <img src="images/bias-1.jpg" alt="Association strengths across demographic terms" loading="lazy" decoding="async" data-full="images/bias-1.jpg">
+            <figcaption>Association strengths across groups</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -220,21 +192,11 @@
             <li>Applications: healthcare narratives, legal anonymization, educational feedback.</li>
           </ul>
         </div>
-        <div class="card">
-          <div class="gallery">
-            <figure class="frame">
-              <img src="images/privacy-1.jpg" alt="Privacy–utility frontier comparing methods" loading="lazy" decoding="async" data-full="images/privacy-1.jpg">
-              <figcaption>Privacy–utility frontier</figcaption>
-            </figure>
-            <figure class="frame">
-              <img src="images/privacy-2.jpg" alt="Embedding-space noise injection diagram" loading="lazy" decoding="async" data-full="images/privacy-2.jpg">
-              <figcaption>Embedding-noise injection</figcaption>
-            </figure>
-            <figure class="frame">
-              <img src="images/privacy-3.jpg" alt="Membership inference attack reduction across settings" loading="lazy" decoding="async" data-full="images/privacy-3.jpg">
-              <figcaption>Lower MIA success rate</figcaption>
-            </figure>
-          </div>
+        <div class="card media">
+          <figure class="frame">
+            <img src="images/privacy-1.jpg" alt="Privacy–utility frontier comparing methods" loading="lazy" decoding="async" data-full="images/privacy-1.jpg">
+            <figcaption>Privacy–utility frontier</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -301,7 +263,7 @@
     const dlg = document.getElementById('lightbox');
     const imgEl = dlg.querySelector('.lightbox-img');
     const closeBtn = document.getElementById('closeBox');
-    document.querySelectorAll('.gallery img').forEach(img=>{
+    document.querySelectorAll('.media img').forEach(img=>{
       img.addEventListener('click', ()=>{
         imgEl.src = img.dataset.full || img.src;
         imgEl.alt = img.alt || "";
