@@ -30,8 +30,10 @@
     .brand{font-weight:700; letter-spacing:.3px}
     .chip{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(96,165,250,.1); color:#cfe6ff; border:1px solid rgba(96,165,250,.25)}
     .btn{display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:12px; background:linear-gradient(135deg, var(--accent), var(--accent-2)); color:#0b1020; font-weight:600; box-shadow:var(--shadow)}
+    .btn.sm{padding:8px 12px; font-size:.95rem; box-shadow:none}
+    .btn.block{width:100%; justify-content:center}
     .btn.ghost{background:transparent; border:1px solid rgba(148,163,184,.35); color:var(--text)}
-    .hero{padding:36px 0 8px; display:grid; grid-template-columns:1.2fr .8fr; gap:28px}
+    .hero{padding:36px 0 8px; display:grid; grid-template-columns:1fr 1fr; gap:28px}
     .hero h1{font-size:clamp(28px, 4vw, 40px); margin:.2rem 0}
     .muted{color:var(--muted)}
     .tagline{font-size:1.05rem; color:#d8dee9}
@@ -57,7 +59,7 @@
       display:block;
       width:100%;
       height:auto;               /* keeps full image visible */
-      max-height:420px;          /* prevents huge vertical stretch */
+      max-height:520px;          /* prevents huge vertical stretch */
       object-fit:contain;        /* NO CROPPING */
       border-radius:10px;
       cursor:zoom-in;
@@ -148,6 +150,9 @@
           <figure class="frame">
             <img src="Fairrec.png" alt="Exposure distribution before and after FairRec" loading="lazy" decoding="async" data-full="Fairrec.png">
             <figcaption>Exposure distribution (before → after)</figcaption>
+            <div class="actions" style="margin-top:10px">
+              <a class="btn sm" href="https://www.researchgate.net/publication/393752947_Enhancing_Structural_Minority_Visibility_in_Link_Recommendations" target="_blank" rel="noopener">PDF</a>
+            </div>
           </figure>
         </div>
       </div>
@@ -172,6 +177,9 @@
           <figure class="frame">
             <img src="images/bias-1.jpg" alt="Association strengths across demographic terms" loading="lazy" decoding="async" data-full="images/bias-1.jpg">
             <figcaption>Association strengths across groups</figcaption>
+            <div class="actions" style="margin-top:10px">
+              <a class="btn sm" href="https://link.springer.com/content/pdf/10.1007/978-981-96-6294-4_20.pdf" target="_blank" rel="noopener">PDF</a>
+            </div>
           </figure>
         </div>
       </div>
@@ -196,6 +204,9 @@
           <figure class="frame">
             <img src="images/privacy-1.jpg" alt="Privacy–utility frontier comparing methods" loading="lazy" decoding="async" data-full="images/privacy-1.jpg">
             <figcaption>Privacy–utility frontier</figcaption>
+            <div class="actions" style="margin-top:10px">
+              <a class="btn sm" href="https://aclanthology.org/2025.naacl-long.187/" target="_blank" rel="noopener">PDF</a>
+            </div>
           </figure>
         </div>
       </div>
@@ -240,6 +251,39 @@
           <p class="muted">Multi-objective pretraining aligned with GDPR / EU AI Act for regulation-ready AI.</p>
         </div>
       </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications" class="section" aria-labelledby="pubs-heading">
+      <h2 id="pubs-heading">Selected Publications</h2>
+      <ul class="pubs" itemscope itemtype="https://schema.org/ItemList" style="list-style:none; padding-left:0; margin:0; display:grid; gap:12px">
+        <meta itemprop="name" content="Selected Publications by Shera Potka"/>
+        <li class="pub card" itemprop="itemListElement" itemscope itemtype="https://schema.org/ScholarlyArticle">
+          <span class="title" itemprop="name">Community Structure and Coherence in Digital Humanities Works</span>
+          <div class="meta"><span class="venue" itemprop="isPartOf">IISA 2023</span> — <em>Best Paper Award</em></div>
+          <div class="links"><a class="btn sm" href="https://ieeexplore.ieee.org/document/10345939" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
+        </li>
+        <li class="pub card" itemprop="itemListElement" itemscope itemtype="https://schema.org/ScholarlyArticle">
+          <span class="title" itemprop="name">Enhancing Structural Minority Visibility in Link Recommendations (MinWalk)</span>
+          <div class="meta"><span class="venue" itemprop="isPartOf">MEDES 2024</span> — <em>Best Paper Award</em></div>
+          <div class="links"><a class="btn sm" href="https://www.researchgate.net/publication/393752947_Enhancing_Structural_Minority_Visibility_in_Link_Recommendations" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
+        </li>
+        <li class="pub card" itemprop="itemListElement" itemscope itemtype="https://schema.org/ScholarlyArticle">
+          <span class="title" itemprop="name">Word Embedding Bias in Large Language Models</span>
+          <div class="meta"><span class="venue" itemprop="isPartOf">I‑SPAN 2025</span></div>
+          <div class="links"><a class="btn sm" href="https://link.springer.com/content/pdf/10.1007/978-981-96-6294-4_20.pdf" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
+        </li>
+        <li class="pub card" itemprop="itemListElement" itemscope itemtype="https://schema.org/ScholarlyArticle">
+          <span class="title" itemprop="name">Gender &amp; Race Bias in Consumer Product Recommendations</span>
+          <div class="meta"><span class="venue" itemprop="isPartOf">AINA 2025</span></div>
+          <div class="links"><a class="btn sm" href="https://www.researchgate.net/publication/390751836_Gender_and_Race_Bias_in_Consumer_Product_Recommendations_by_Large_Language_Models" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
+        </li>
+        <li class="pub card" itemprop="itemListElement" itemscope itemtype="https://schema.org/ScholarlyArticle">
+          <span class="title" itemprop="name">CluSanT: Differentially Private and Semantically Coherent Text Sanitization</span>
+          <div class="meta"><span class="venue" itemprop="isPartOf">NAACL 2025</span></div>
+          <div class="links"><a class="btn sm" href="https://aclanthology.org/2025.naacl-long.187/" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
+        </li>
+      </ul>
     </section>
 
     <footer>
