@@ -28,13 +28,15 @@ a:focus { outline: 2px solid #000; outline-offset: 2px; }
 .metrics .v { font-size:22px; font-weight:700; }
 .metrics .k { font-size:12px; color:var(--muted); }
 
-/* photo — NO grayscale */
+/* photo — smaller */
 .hero-photo img {
-  width:60%; aspect-ratio:4/5; object-fit:cover;
-  border-radius:26px; border:1px solid var(--line); box-shadow:0 4px 20px rgba(0,0,0,.05);
+  width:40%;              /* was 60% */
+  aspect-ratio:4/5;
+  object-fit:cover;
+  border-radius:26px;
+  border:1px solid var(--line);
+  box-shadow:0 4px 20px rgba(0,0,0,.05);
 }
-.hero-photo .quick { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:10px; }
-.hero-photo .quick a { border:1px solid var(--line); border-radius:12px; padding:8px 10px; text-align:center; text-decoration:none; color:inherit; }
 
 /* main content */
 .content { max-width:var(--max); margin:0 auto 60px; padding:0 var(--pad); }
