@@ -4,112 +4,235 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shera Potka — Fairness • Bias • Privacy in AI</title>
-  <link rel="stylesheet" href="styles.css" />
-  <meta name="description" content="Shera Potka PhD in Computer Science, University of Victoria (May 2025). I use data mining, machine learning, and data privacy to design methods that elevate under-represented groups and reduce bias in large language models. Contributions include MinWalk for fairness-aware link recommendations and CluSanT for differentially private, semantically coherent text sanitization; current focus: measuring and reducing LLM bias.
+  <meta name="description" content="Shera Potka — PhD in Computer Science (UVic, May 2025). I design methods in data mining and privacy-preserving NLP that elevate under‑represented groups and reduce bias in large language models. Work includes MinWalk (fairness‑aware link recommendations) and CluSanT (differentially private, semantically coherent text sanitization). Current focus: measuring and reducing LLM bias." />
 
-Instructor, Data Models & Algorithms (UVic, 2025)." />
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Shera Potka — Fairness • Bias • Privacy in AI" />
+  <meta property="og:description" content="PhD researcher & educator in algorithmic fairness, LLM bias, and privacy‑preserving NLP." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="SheraPotka.png" />
+  <meta property="og:url" content="https://sherapotka.example" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="preload" href="SheraPotka.png" as="image" fetchpriority="high" />
+  <style>
+    :root{
+      --bg: #0b0c10;
+      --panel: #111218;
+      --text: #e7e9ee;
+      --muted: #a9afbc;
+      --accent: #7aa2ff;
+      --accent-2:#a78bfa;
+      --ring: #2a2f3a;
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+      --radius: 16px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root{ --bg:#f7f7fb; --panel:#ffffff; --text:#101318; --muted:#5b6373; --ring:#e8ebf2; }
+      header.nav{ box-shadow: 0 1px 0 var(--ring); }
+    }
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text); background:radial-gradient(1000px 600px at 10% -10%, rgba(122,162,255,.18), transparent 60%),
+             radial-gradient(1200px 800px at 90% -20%, rgba(167,139,250,.12), transparent 60%), var(--bg);
+      line-height:1.6;
+    }
+    a{ color:var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+    .container{ width:min(1100px, 92%); margin-inline:auto; }
+    .visually-hidden{ position:absolute; width:1px; height:1px; margin:-1px; padding:0; border:0; clip:rect(0 0 0 0); overflow:hidden; }
+
+    /* Header */
+    header.nav{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(8px);
+      background:color-mix(in oklab, var(--bg) 85%, black 15%);
+    }
+    header.nav .wrap{ display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:14px 0; }
+    .brand{ font-weight:700; letter-spacing:.2px; color:var(--text); }
+    nav.links{ display:flex; align-items:center; gap:.9rem; }
+    .btn{ display:inline-block; padding:.6rem .9rem; border-radius:999px; background:var(--accent); color:white; font-weight:600; box-shadow:var(--shadow); border:1px solid color-mix(in oklab, var(--accent) 70%, black 30%); }
+    .btn.ghost{ background:transparent; color:var(--text); border:1px solid var(--ring); box-shadow:none; }
+
+    /* Hero */
+    .hero{ display:grid; grid-template-columns: 1.2fr .9fr; gap:2rem; align-items:center; padding:clamp(32px, 6vw, 72px) 0 24px; }
+    .hero h1{ font-size:clamp(28px, 5vw, 52px); line-height:1.1; margin:0 0 .6rem; letter-spacing:.2px; }
+    .hero p{ margin:0 0 1.2rem; color:var(--muted); font-size:clamp(16px, 1.6vw, 18px); }
+    .cta{ display:flex; gap:.8rem; flex-wrap:wrap; }
+    .quick{ display:flex; gap:.6rem; margin-top:.8rem; }
+    .quick a{ padding:.4rem .7rem; border-radius:999px; border:1px solid var(--ring); color:var(--text); }
+
+    .hero-photo{ justify-self:end; position:relative; }
+    .hero-photo img{ width:min(440px, 42vw); max-width:100%; height:auto; border-radius:var(--radius); display:block; box-shadow:var(--shadow); border:1px solid var(--ring); background:var(--panel); }
+
+    /* Sections */
+    section{ padding:40px 0; }
+    h2{ font-size:clamp(22px, 2.6vw, 32px); margin:0 0 16px; }
+
+    /* Cards */
+    .cards{ display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; }
+    .card{ background:var(--panel); padding:18px; border:1px solid var(--ring); border-radius:var(--radius); transition:transform .18s ease, box-shadow .18s ease; color:inherit; }
+    .card:hover{ transform:translateY(-2px); box-shadow:var(--shadow); text-decoration:none; }
+    .card h3{ margin:.2rem 0 .2rem; font-size:1.05rem; }
+    .card p{ margin:.2rem 0 0; color:var(--muted); }
+
+    /* Publications */
+    .pubs{ list-style:none; margin:0; padding:0; display:grid; gap:14px; }
+    .pub{ background:var(--panel); border:1px solid var(--ring); border-radius:var(--radius); padding:16px; display:grid; gap:4px; }
+    .pub .meta{ display:flex; flex-wrap:wrap; gap:.6rem; color:var(--muted); font-size:.95rem; }
+    .pub .title{ font-weight:600; }
+    .pub .links{ margin-top:.3rem; display:flex; gap:.6rem; }
+
+    /* Timeline */
+    .timeline{ list-style:none; margin:0; padding:0; display:grid; gap:18px; }
+    .item{ background:var(--panel); border:1px solid var(--ring); border-radius:var(--radius); padding:16px; }
+    .row{ display:flex; justify-content:space-between; gap:10px; font-weight:600; }
+    .org{ color:var(--muted); margin:.2rem 0 .5rem; }
+    .bullets{ margin:.1rem 0 0 1rem; }
+
+    /* Contact */
+    .contact{ display:flex; justify-content:space-between; align-items:center; gap:1rem; background:var(--panel); border:1px solid var(--ring); border-radius:var(--radius); padding:16px; }
+    .email{ font-weight:700; }
+    .muted{ color:var(--muted); font-size:.95rem; }
+
+    /* Footer */
+    .footer{ display:flex; justify-content:space-between; align-items:center; gap:.8rem; padding:28px 0 60px; color:var(--muted); font-size:.95rem; border-top:1px solid var(--ring); margin-top:28px; }
+    .footer .links{ display:flex; gap:1rem; }
+
+    /* Small screens */
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+      .hero-photo{ justify-self:start; }
+      .hero-photo img{ width:100%; }
+      .cards{ grid-template-columns: 1fr; }
+      .contact{ flex-direction:column; align-items:flex-start; }
+      nav.links{ display:none; }
+      .menu-toggle{ display:inline-flex; align-items:center; gap:.45rem; border:1px solid var(--ring); border-radius:999px; padding:.4rem .7rem; background:transparent; color:var(--text); }
+      .mobile{ display:flex; flex-direction:column; gap:.6rem; padding:12px; margin-top:8px; border:1px solid var(--ring); border-radius:12px; background:var(--panel); }
+      .mobile a{ padding:.4rem .5rem; border-radius:8px; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Shera Potka",
+    "description": "PhD researcher & educator in algorithmic fairness, LLM bias, and privacy‑preserving NLP.",
+    "email": "mailto:spotka@uvic.ca",
+    "image": "SheraPotka.png",
+    "sameAs": [
+      "https://github.com/sherapotka",
+      "https://www.linkedin.com/in/shera-potka-bb18b22b1/"
+    ],
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "University of Victoria"
+    },
+    "jobTitle": "Instructor / Researcher"
+  }
+  </script>
 </head>
 <body>
+  <a class="visually-hidden" href="#main">Skip to content</a>
   <header class="nav">
-    <a class="brand" href="/">Shera Potka</a>
-    <nav class="links">
-      <!-- REPLACE with your real research URL -->
-      <a href="research.html"
-         target="_blank" rel="noopener noreferrer"
-         aria-label="Open my research site in a new tab">Research</a>
+    <div class="container wrap">
+      <a class="brand" href="/" aria-label="Home">Shera Potka</a>
+      <nav class="links" aria-label="Primary">
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="SheraPotkaCVa.pdf" target="_blank" rel="noopener">CV</a>
+      </nav>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" onclick="toggleMenu()" style="display:none">Menu
+      </button>
+    </div>
+    <div id="mobile-nav" class="container mobile" hidden>
+      <a href="#research">Research</a>
       <a href="#publications">Publications</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
       <a class="btn" href="SheraPotkaCVa.pdf" target="_blank" rel="noopener">CV</a>
-    </nav>
+    </div>
   </header>
 
-  <section class="hero">
-    <div class="hero-text">
-      
-      <h1>Fairness • Bias • Privacy in AI</h1>
-      <p>PhD researcher and educator focusing on data mining, algorithmic fairness, bias in large language models, and privacy-preserving NLP.</p>
-      <div class="cta">
-      
-     
-    </div>
-    <div class="hero-photo">
-      <img src="SheraPotka.png" alt="Shera Potka" />
-      <div class="quick">
-        <a href="mailto:spotka@uvic.ca">Email</a>
-        <a href="https://github.com/sherapotka" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/shera-potka-bb18b22b1/" target="_blank" rel="noopener">LinkedIn</a>
+  <main id="main" class="container">
+    <section class="hero" aria-labelledby="tagline">
+      <div>
+        <h1 id="tagline">Fairness • Bias • Privacy in AI</h1>
+        <p>PhD researcher and educator focusing on data mining, algorithmic fairness, bias in large language models, and privacy‑preserving NLP.</p>
+        <div class="cta">
+          <a class="btn" href="#publications">View Publications</a>
+          <a class="btn ghost" href="mailto:spotka@uvic.ca">Contact</a>
+        </div>
+        <div class="quick" aria-label="Quick links">
+          <a href="mailto:spotka@uvic.ca" aria-label="Email Shera">Email</a>
+          <a href="https://github.com/sherapotka" target="_blank" rel="noopener" aria-label="GitHub (opens in new tab)">GitHub</a>
+          <a href="https://www.linkedin.com/in/shera-potka-bb18b22b1/" target="_blank" rel="noopener" aria-label="LinkedIn (opens in new tab)">LinkedIn</a>
+        </div>
       </div>
-    </div>
-  </section>
+      <div class="hero-photo">
+        <img src="SheraPotka.png" alt="Portrait of Shera Potka" loading="eager" decoding="async" />
+      </div>
+    </section>
 
-  <main class="content">
-    <section id="research">
-      <h2>Research Focus</h2>
+    <section id="research" aria-labelledby="research-heading">
+      <h2 id="research-heading">Research Focus</h2>
       <div class="cards">
-        <!-- Make each card click out to your research site (new tab) -->
-        <a class="card" href="https://YOUR-RESEARCH-SITE.com/fairness"
-           target="_blank" rel="noopener noreferrer"
-           aria-label="Open Fairness in Social Recommenders (new tab)">
+        <!-- TODO: Replace placeholder links with your research pages -->
+        <a class="card" href="https://YOUR-RESEARCH-SITE.com/fairness" target="_blank" rel="noopener noreferrer" aria-label="Open Fairness in Social Recommenders (new tab)">
           <h3>Fairness in Social Recommenders</h3>
           <p>Improving minority visibility and mitigating popularity bias while preserving utility.</p>
         </a>
-
-        <a class="card" href="https://YOUR-RESEARCH-SITE.com/llm-bias"
-           target="_blank" rel="noopener noreferrer"
-           aria-label="Open Bias in Large Language Models (new tab)">
+        <a class="card" href="https://YOUR-RESEARCH-SITE.com/llm-bias" target="_blank" rel="noopener noreferrer" aria-label="Open Bias in Large Language Models (new tab)">
           <h3>Bias in Large Language Models</h3>
-          <p>Measuring gender &amp; race bias in embeddings and contextual models (e.g., SC-WEAT).</p>
+          <p>Measuring gender &amp; race bias in embeddings and contextual models (e.g., SC‑WEAT).</p>
         </a>
-
-        <a class="card" href="https://YOUR-RESEARCH-SITE.com/privacy"
-           target="_blank" rel="noopener noreferrer"
-           aria-label="Open Privacy in NLP (new tab)">
+        <a class="card" href="https://YOUR-RESEARCH-SITE.com/privacy" target="_blank" rel="noopener noreferrer" aria-label="Open Privacy in NLP (new tab)">
           <h3>Privacy in NLP</h3>
           <p>Differentially private text sanitization that maintains semantic coherence (e.g., CluSanT).</p>
         </a>
       </div>
     </section>
 
-    <section id="publications">
-      <h2>Selected Publications</h2>
+    <section id="publications" aria-labelledby="pubs-heading">
+      <h2 id="pubs-heading">Selected Publications</h2>
       <ul class="pubs">
-        <li>
-          <div class="pub-title">Community Structure and Coherence in Digital Humanities Works</div>
-          <div class="pub-venue">IISA 2023 — <em>Best Paper Award</em></div>
-          <a class="pub-link" href="https://ieeexplore.ieee.org/document/10345939" target="_blank" rel="noopener">Conference</a>
+        <li class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
+          <span class="title" itemprop="name">Community Structure and Coherence in Digital Humanities Works</span>
+          <div class="meta"><span class="venue" itemprop="isPartOf">IISA 2023</span> — <em>Best Paper Award</em></div>
+          <div class="links"><a class="pub-link" href="https://ieeexplore.ieee.org/document/10345939" target="_blank" rel="noopener" itemprop="url">Conference</a></div>
         </li>
-        <li>
-          <div class="pub-title">Enhancing Structural Minority Visibility in Link Recommendations (MinWalk)</div>
-          <div class="pub-venue">MEDES 2024 — <em>Best Paper Award</em></div>
-          <a class="pub-link" href="https://www.researchgate.net/publication/393752947_Enhancing_Structural_Minority_Visibility_in_Link_Recommendations" target="_blank" rel="noopener">Venue</a>
+        <li class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
+          <span class="title" itemprop="name">Enhancing Structural Minority Visibility in Link Recommendations (MinWalk)</span>
+          <div class="meta"><span class="venue" itemprop="isPartOf">MEDES 2024</span> — <em>Best Paper Award</em></div>
+          <div class="links"><a class="pub-link" href="https://www.researchgate.net/publication/393752947_Enhancing_Structural_Minority_Visibility_in_Link_Recommendations" target="_blank" rel="noopener" itemprop="url">Venue</a></div>
         </li>
-        <li>
-          <div class="pub-title">Word Embedding Bias in Large Language Models</div>
-          <div class="pub-venue">I-SPAN 2025</div>
-          <a class="pub-link" href="https://link.springer.com/content/pdf/10.1007/978-981-96-6294-4_20.pdf" target="_blank" rel="noopener">Proceedings PDF</a>
+        <li class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
+          <span class="title" itemprop="name">Word Embedding Bias in Large Language Models</span>
+          <div class="meta"><span class="venue" itemprop="isPartOf">I‑SPAN 2025</span></div>
+          <div class="links"><a class="pub-link" href="https://link.springer.com/content/pdf/10.1007/978-981-96-6294-4_20.pdf" target="_blank" rel="noopener" itemprop="url">Proceedings PDF</a></div>
         </li>
-        <li>
-          <div class="pub-title">Gender &amp; Race Bias in Consumer Product Recommendations</div>
-          <div class="pub-venue">AINA 2025</div>
-          <a class="pub-link" href="https://www.researchgate.net/publication/390751836_Gender_and_Race_Bias_in_Consumer_Product_Recommendations_by_Large_Language_Models" target="_blank" rel="noopener">Preprint</a>
+        <li class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
+          <span class="title" itemprop="name">Gender &amp; Race Bias in Consumer Product Recommendations</span>
+          <div class="meta"><span class="venue" itemprop="isPartOf">AINA 2025</span></div>
+          <div class="links"><a class="pub-link" href="https://www.researchgate.net/publication/390751836_Gender_and_Race_Bias_in_Consumer_Product_Recommendations_by_Large_Language_Models" target="_blank" rel="noopener" itemprop="url">Preprint</a></div>
         </li>
-        <li>
-          <div class="pub-title">CluSanT: Differentially Private and Semantically Coherent Text Sanitization</div>
-          <div class="pub-venue">NAACL 2025</div>
-          <a class="pub-link" href="https://aclanthology.org/2025.naacl-long.187/" target="_blank" rel="noopener">Conference</a>
+        <li class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
+          <span class="title" itemprop="name">CluSanT: Differentially Private and Semantically Coherent Text Sanitization</span>
+          <div class="meta"><span class="venue" itemprop="isPartOf">NAACL 2025</span></div>
+          <div class="links"><a class="pub-link" href="https://aclanthology.org/2025.naacl-long.187/" target="_blank" rel="noopener" itemprop="url">Conference</a></div>
         </li>
       </ul>
     </section>
 
-    <section id="experience">
-      <h2>Experience</h2>
+    <section id="experience" aria-labelledby="exp-heading">
+      <h2 id="exp-heading">Experience</h2>
       <ul class="timeline">
-        <li>
-          <div class="row">
-            <span class="role">Instructor — Data Models &amp; Algorithms</span>
-            <span class="time">Jan–Apr 2025</span>
-          </div>
+        <li class="item">
+          <div class="row"><span class="role">Instructor — Data Models &amp; Algorithms</span><span class="time">Jan–Apr 2025</span></div>
           <div class="org">University of Victoria</div>
           <ul class="bullets">
             <li>Interactive lectures with active learning</li>
@@ -117,34 +240,28 @@ Instructor, Data Models & Algorithms (UVic, 2025)." />
             <li>Mentored teams applying algorithms in projects</li>
           </ul>
         </li>
-        <li>
-          <div class="row">
-            <span class="role">Teaching Assistant — Data Mining &amp; Web Design</span>
-            <span class="time">2023–2024</span>
-          </div>
+        <li class="item">
+          <div class="row"><span class="role">Teaching Assistant — Data Mining &amp; Web Design</span><span class="time">2023–2024</span></div>
           <div class="org">University of Victoria</div>
           <ul class="bullets">
             <li>Supported cohorts up to 180 students</li>
-            <li>Designed hands-on labs and grading rubrics</li>
-            <li>Guided projects in ML and front-end fundamentals</li>
+            <li>Designed hands‑on labs and grading rubrics</li>
+            <li>Guided projects in ML and front‑end fundamentals</li>
           </ul>
         </li>
-        <li>
-          <div class="row">
-            <span class="role">Software Developer</span>
-            <span class="time">Nov 2022 – Nov 2023</span>
-          </div>
+        <li class="item">
+          <div class="row"><span class="role">Software Developer</span><span class="time">Nov 2022 – Nov 2023</span></div>
           <div class="org">CCEH, University of Cologne</div>
           <ul class="bullets">
-            <li>Cross-disciplinary research software</li>
-            <li>RACIR project support (higher-ed research)</li>
+            <li>Cross‑disciplinary research software</li>
+            <li>RACIR project support (higher‑ed research)</li>
           </ul>
         </li>
       </ul>
     </section>
 
-    <section id="contact">
-      <h2>Get in touch</h2>
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Get in touch</h2>
       <div class="contact">
         <div>
           <div class="email">spotka@uvic.ca</div>
@@ -152,25 +269,35 @@ Instructor, Data Models & Algorithms (UVic, 2025)." />
         </div>
         <div class="contact-links">
           <a class="btn" href="mailto:spotka@uvic.ca">Email</a>
-          <a class="btn ghost" href="https://linkedin.com/in/shera-potka" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/shera-potka-bb18b22b1/" target="_blank" rel="noopener">LinkedIn</a>
           <a class="btn ghost" href="https://github.com/sherapotka" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </section>
-  </main>
 
-  <footer class="footer">
-    <div>© <span id="year"></span> Shera Potka</div>
-    <div class="links">
-      <a href="#publications">Publications</a>
-      <!-- Match header behavior -->
-      <a href="https://YOUR-RESEARCH-SITE.com" target="_blank" rel="noopener noreferrer">Research</a>
-      <a href="SheraPotkaCVa.pdf" target="_blank" rel="noopener">CV</a>
-    </div>
-  </footer>
+    <footer class="footer" role="contentinfo">
+      <div>© <span id="year"></span> Shera Potka</div>
+      <div class="links">
+        <a href="#publications">Publications</a>
+        <a href="#research">Research</a>
+        <a href="SheraPotkaCVa.pdf" target="_blank" rel="noopener">CV</a>
+      </div>
+    </footer>
+  </main>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    function toggleMenu(){
+      const btn = document.querySelector('.menu-toggle');
+      const nav = document.getElementById('mobile-nav');
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      nav.hidden = expanded;
+    }
+    // Reveal mobile menu button only on small screens (avoids FOUC)
+    const mq = window.matchMedia('(max-width: 900px)');
+    const setBtn = () => { document.querySelector('.menu-toggle').style.display = mq.matches ? 'inline-flex' : 'none'; };
+    mq.addEventListener('change', setBtn); setBtn();
   </script>
 </body>
 </html>
