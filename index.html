@@ -1,34 +1,24 @@
-<!doctype html>
-<html lang="en" class="no-js" dir="ltr">
+ea<!doctype html>
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark light">
-  <meta name="format-detection" content="telephone=no" />
   <title>Shera Potka — Fairness • Bias • Privacy in AI</title>
   <meta name="author" content="Shera Potka" />
-  <meta name="description" content="Instructor & Researcher (UVic). Research areas: algorithmic fairness in social recommenders, bias in large language models, and privacy-preserving NLP. Methods: minority visibility in link recommendations, bias measurement/mitigation for embeddings and contextual models, and differentially private text sanitization." />
+  <meta name="description" content="Instructor & Researcher (UVic). Research areas: algorithmic fairness in social recommenders, bias in large language models, and privacy‑preserving NLP. Methods: minority visibility in link recommendations, bias measurement/mitigation for embeddings and contextual models, and differentially private text sanitization." />
   <link rel="canonical" href="https://sherapotka.example/" />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
-
-  <!-- Theme colors for light/dark address bars -->
-  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0a" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Shera Potka — Fairness • Bias • Privacy in AI" />
-  <meta property="og:description" content="PhD researcher & educator in algorithmic fairness, LLM bias, and privacy-preserving NLP." />
+  <meta property="og:description" content="PhD researcher & educator in algorithmic fairness, LLM bias, and privacy‑preserving NLP." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="/SheraPotka.png" />
-  <meta property="og:image:alt" content="Portrait of Shera Potka" />
-  <meta property="og:image:width" content="880" />
-  <meta property="og:image:height" content="1056" />
+  <meta property="og:image" content="SheraPotka.png" />
   <meta property="og:url" content="https://sherapotka.example/" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="icon" href="/favicon.ico" sizes="any" />
-  <!-- Preload the hero image to avoid CLS on LCP element -->
-  <link rel="preload" href="/SheraPotka.png" as="image" fetchpriority="high" imagesrcset="/SheraPotka.png 880w" imagesizes="(max-width: 900px) 92vw, 440px" />
+  <link rel="preload" href="SheraPotka.png" as="image" fetchpriority="high" />
 
   <style>
     /* ===== Design tokens: strictly black & white (images keep color) ===== */
@@ -67,32 +57,12 @@
     .visually-hidden{ position:absolute; width:1px; height:1px; margin:-1px; padding:0; border:0; clip:rect(0 0 0 0); overflow:hidden; white-space:nowrap }
 
     /* ===== Header ===== */
-    header.nav.pro{ position: sticky; top:0; z-index:80; background:rgba(0,0,0,.55); border-bottom:1px solid var(--ring); backdrop-filter:saturate(130%) blur(10px); }
-    @media (prefers-color-scheme: light){ header.nav.pro{ background:rgba(255,255,255,.7) } }
-    .nav-wrap{ display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:12px 0; }
-    .brand{ display:inline-flex; align-items:center; gap:.55rem; text-decoration:none; font-weight:800; letter-spacing:.2px; color:var(--text); }
-    .brand-mark{ display:inline-grid; place-items:center; width:28px; height:28px; border-radius:8px; border:1px solid var(--ring); background:var(--panel); box-shadow:var(--shadow); font-size:14px; }
-    .nav-links{ display:flex; align-items:center; gap:1.1rem; }
-    .nav-links a{ position:relative; text-decoration:none; color:var(--text); padding:.25rem .1rem; font-weight:600; }
-    .nav-links a::after{ content:""; position:absolute; left:0; right:0; bottom:-2px; height:2px; background:currentColor; transform:scaleX(0); transform-origin:right; transition:transform .2s ease; }
-    .nav-links a:hover::after, .nav-links a:focus-visible::after{ transform:scaleX(1); transform-origin:left; }
-    .nav-actions{ display:flex; align-items:center; gap:.5rem; }
-    .btn.small{ padding:.45rem .7rem; font-size:.95rem; border-radius:999px; }
-    .icon-btn{ display:inline-grid; place-items:center; width:36px; height:36px; border-radius:999px; border:1px solid var(--ring); background:transparent; color:var(--text); }
-    .icon{ display:block }
-    .theme-toggle .sun{ display:none }
-    :root[data-theme="light"] .theme-toggle .sun{ display:block }
-    :root[data-theme="light"] .theme-toggle .moon{ display:none }
-
-    /* Hamburger */
-    .menu-toggle{ display:none }
-    .menu-toggle .bars{ width:18px; height:2px; background:currentColor; position:relative; border-radius:2px; display:block; }
-    .menu-toggle .bars::before, .menu-toggle .bars::after{ content:""; position:absolute; left:0; width:18px; height:2px; background:currentColor; border-radius:2px; }
-    .menu-toggle .bars::before{ top:-6px } .menu-toggle .bars::after{ top:6px }
-
-    /* Mobile sheet menu */
-    .mobile-sheet{ position: fixed; inset:64px 0 auto 0; display:flex; flex-direction:column; gap:.6rem; background:var(--panel); border-top:1px solid var(--ring); padding:12px; z-index:75; }
-    .mobile-sheet a{ padding:.6rem .7rem; border-radius:10px; text-decoration:none; border:1px solid var(--ring); }
+    header.nav{ position:sticky; top:0; z-index:50; background:rgba(0,0,0,.6); box-shadow: 0 1px 0 var(--ring); backdrop-filter:saturate(120%) blur(8px); }
+    @media (prefers-color-scheme: light){ header.nav{ background:rgba(255,255,255,.75); }}
+    header.nav .wrap{ display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:14px 0; }
+    .brand{ font-weight:800; letter-spacing:.2px; color:var(--text); text-decoration:none; }
+    nav.links{ display:flex; align-items:center; gap:.9rem; }
+    .menu-toggle{ display:none; align-items:center; gap:.45rem; border:1px solid var(--ring); border-radius:999px; padding:.45rem .7rem; background:transparent; color:var(--text); }
 
     /* ===== Buttons (monochrome only) ===== */
     .btn{ display:inline-block; padding:.6rem .9rem; border-radius:999px; background:#fff; color:#000; font-weight:700; box-shadow:var(--shadow); border:1px solid #fff; text-decoration:none; }
@@ -148,7 +118,9 @@
     .footer .links{ display:flex; gap:1rem; }
 
     /* ===== Reduced motion ===== */
-    @media (prefers-reduced-motion: reduce){ *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important } }
+    @media (prefers-reduced-motion: reduce){
+      *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important }
+    }
 
     /* ===== Small screens ===== */
     @media (max-width: 900px){
@@ -157,9 +129,10 @@
       .hero-photo img{ width:100%; }
       .cards{ grid-template-columns: 1fr; }
       .contact{ flex-direction:column; align-items:flex-start; }
-      .nav-links{ display:none; }
-      .menu-toggle{ display:inline-grid; }
-      .mobile-sheet{ inset:58px 0 auto 0 }
+      nav.links{ display:none; }
+      .menu-toggle{ display:inline-flex; }
+      .mobile{ display:flex; flex-direction:column; gap:.6rem; padding:12px; margin-top:8px; border:1px solid var(--ring); border-radius:12px; background:var(--panel); }
+      .mobile a{ padding:.4rem .5rem; border-radius:8px; text-decoration:none }
     }
 
     /* ===== Print-friendly override ===== */
@@ -167,10 +140,9 @@
       :root{ --bg:#ffffff; --panel:#ffffff; --text:#000000; --muted:#555555; --ring:#e5e5e5; }
       body{ background:#fff !important; color:#000 !important; }
       .hero-photo img{ filter:none !important; }
-      .cta, .quick, .nav-actions, .nav-links, .menu-toggle{ display:none !important; }
+      .cta, .quick{ display:none !important; }
       header.nav{ background:#fff !important; box-shadow:none !important; }
       .btn, .btn.ghost{ border:1px solid #000 !important; color:#000 !important; background:#fff !important; box-shadow:none !important; }
-      a[href]::after{ content:" (" attr(href) ")"; font-size:0.9em; }
     }
   </style>
 
@@ -180,9 +152,9 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Shera Potka",
-    "description": "PhD researcher & educator in algorithmic fairness, LLM bias, and privacy-preserving NLP.",
+    "description": "PhD researcher & educator in algorithmic fairness, LLM bias, and privacy‑preserving NLP.",
     "email": "mailto:spotka@uvic.ca",
-    "image": "/SheraPotka.png",
+    "image": "SheraPotka.png",
     "sameAs": [
       "https://github.com/sherapotka",
       "https://www.linkedin.com/in/shera-potka-bb18b22b1/"
@@ -196,92 +168,60 @@
     "worksFor": {"@type": "CollegeOrUniversity", "name": "University of Victoria"}
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Selected Publications by Shera Potka",
-    "itemListElement": [
-      {"@type":"ListItem","position":1,"item":{"@type":"ScholarlyArticle","name":"Community Structure and Coherence in Digital Humanities Works","url":"https://ieeexplore.ieee.org/document/10345939"}},
-      {"@type":"ListItem","position":2,"item":{"@type":"ScholarlyArticle","name":"Enhancing Structural Minority Visibility in Link Recommendations (MinWalk)","url":"https://www.researchgate.net/publication/393752947_Enhancing_Structural_Minority_Visibility_in_Link_Recommendations"}},
-      {"@type":"ListItem","position":3,"item":{"@type":"ScholarlyArticle","name":"Word Embedding Bias in Large Language Models","url":"https://link.springer.com/content/pdf/10.1007/978-981-96-6294-4_20.pdf"}},
-      {"@type":"ListItem","position":4,"item":{"@type":"ScholarlyArticle","name":"Gender & Race Bias in Consumer Product Recommendations","url":"https://www.researchgate.net/publication/390751836_Gender_and_Race_Bias_in_Consumer_Product_Recommendations_by_Large_Language_Models"}},
-      {"@type":"ListItem","position":5,"item":{"@type":"ScholarlyArticle","name":"CluSanT: Differentially Private and Semantically Coherent Text Sanitization","url":"https://aclanthology.org/2025.naacl-long.187/"}}
-    ]
-  }
-  </script>
 </head>
 <body>
   <a class="visually-hidden" href="#main">Skip to content</a>
-
-  <header class="nav pro" role="banner">
-    <div class="container nav-wrap">
-      <a class="brand" href="/" aria-label="Home">
-        <span class="brand-mark" aria-hidden="true">S</span>
-        <span class="brand-text">Shera Potka</span>
-      </a>
-
-      <nav class="nav-links" aria-label="Primary">
+  <header class="nav" role="banner">
+    <div class="container wrap">
+      <a class="brand" href="/" aria-label="Home">Shera Potka</a>
+      <nav class="links" aria-label="Primary">
         <a href="/research.html" target="_blank" rel="noopener noreferrer">Research</a>
         <a href="#publications">Publications</a>
-        <a href="#teaching">Teaching</a>
         <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
-        <a class="btn small" href="/assets/SheraCVa.pdf" target="_blank" rel="noopener" download>CV</a>
+        <a href="/assets/SheraPotkaCV.pdf" target="_blank" rel="noopener noreferrer" download>CV</a>
       </nav>
-
-      <div class="nav-actions">
-        <button class="icon-btn theme-toggle" aria-label="Toggle theme" title="Toggle theme">
-          <!-- simple sun/moon glyphs (monochrome, no deps) -->
-          <svg class="icon sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 4.5a1 1 0 0 1 1 1V7a1 1 0 1 1-2 0V5.5a1 1 0 0 1 1-1Zm0 4a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/></svg>
-          <svg class="icon moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M21 12.8A9 9 0 0 1 11.2 3a.8.8 0 0 0-.9 1A7.5 7.5 0 1 0 21 12.8Z"/></svg>
-        </button>
-        <button class="menu-toggle icon-btn" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
-          <span class="bars" aria-hidden="true"></span>
-        </button>
-      </div>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">Menu</button>
     </div>
-
-    <!-- mobile menu -->
-    <nav id="mobile-nav" class="mobile-sheet" hidden aria-label="Mobile">
-      <a href="/research.html" target="_blank" rel="noopener">Research</a>
+    <div id="mobile-nav" class="container mobile" hidden role="navigation" aria-label="Mobile">
+      <a href="/research.html" target="_blank" rel="noopener noreferrer">Research</a>
       <a href="#publications">Publications</a>
-      <a href="#teaching">Teaching</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
-      <a class="btn" href="/assets/SheraCVa.pdf" target="_blank" rel="noopener" download>Download CV</a>
-    </nav>
+      <a href="/assets/SheraPotkaCV.pdf" target="_blank" rel="noopener noreferrer" download>CV</a>
+    </div>
   </header>
 
   <main id="main" role="main" class="container">
     <section class="hero" aria-labelledby="intro-heading">
       <div>
         <h1 id="intro-heading">Researcher & Instructor</h1>
-        <p>I’m a postdoctoral researcher in Computer Science at the University of Victoria. My work focuses on fairness in recommender systems, bias in large language models, and privacy in natural language processing. I design embedding-based methods that make AI systems more inclusive, accountable, and privacy-preserving. My long-term goal is to build a unified framework of “ethical embeddings” for responsible AI in law, education, and healthcare.</p>
-        <div class="quick" aria-label="Quick links">
-          <a href="#publications">View publications</a>
-          <a href="/assets/SheraCVa.pdf" class="ghost" download>Download CV</a>
-        </div>
+        <p> I’m a postdoctoral researcher in Computer Science at the University of Victoria.
+My work focuses on fairness in recommender systems, bias in large language models, and privacy in natural language processing.
+I design embedding-based methods that make AI systems more inclusive, accountable, and privacy-preserving.
+My long-term goal is to build a unified framework of “ethical embeddings” for responsible AI in law, education, and healthcare.
+</p>
       </div>
       <div class="hero-photo">
         <figure>
-          <img src="/SheraPotka.png" alt="Portrait of Shera Potka" width="880" height="1056" loading="eager" fetchpriority="high" decoding="async" />
+          <img src="SheraPotka.png" alt="Portrait of Shera Potka" width="440" height="528" />
+          
         </figure>
       </div>
     </section>
 
     <section aria-labelledby="research-heading">
       <h2 id="research-heading">Research Focus</h2>
-      <div class="cards" role="list">
-        <a class="card" role="listitem" href="/research.html#fairness" target="_blank" rel="noopener" aria-label="Open Fairness section in Research (new tab)">
+      <div class="cards">
+        <a class="card" href="/research.html#fairness" target="_blank" rel="noopener noreferrer" aria-label="Open Fairness section in Research (new tab)">
           <h3>Fairness in Social Recommenders</h3>
-          <p>Minority visibility and popularity-bias mitigation with minimal utility loss.</p>
+          <p>Minority visibility and popularity‑bias mitigation with minimal utility loss.</p>
         </a>
-        <a class="card" role="listitem" href="/research.html#llm-bias" target="_blank" rel="noopener" aria-label="Open LLM Bias section in Research (new tab)">
+        <a class="card" href="/research.html#llm-bias" target="_blank" rel="noopener noreferrer" aria-label="Open LLM Bias section in Research (new tab)">
           <h3>Bias in Large Language Models</h3>
-          <p>Measuring gender &amp; race bias in embeddings and contextual models (e.g., SC-WEAT).</p>
+          <p>Measuring gender &amp; race bias in embeddings and contextual models (e.g., SC‑WEAT).</p>
         </a>
-        <a class="card" role="listitem" href="/research.html#privacy" target="_blank" rel="noopener" aria-label="Open Privacy section in Research (new tab)">
+        <a class="card" href="/research.html#privacy" target="_blank" rel="noopener noreferrer" aria-label="Open Privacy section in Research (new tab)">
           <h3>Privacy in NLP</h3>
           <p>Differentially private text sanitization with semantic fidelity (e.g., CluSanT).</p>
         </a>
@@ -291,9 +231,18 @@
     <section id="teaching" aria-labelledby="teaching-heading">
       <h2 id="teaching-heading">Teaching</h2>
       <div class="cards">
-        <article class="card"><h3>Data Models &amp; Algorithms (Instructor)</h3><p>Active-learning lectures; rigor with proofs; implementation-ready pseudocode. Topics: asymptotics, graphs, greedy, divide-and-conquer, DP, reductions, NP-completeness.</p></article>
-        <article class="card"><h3>Data Mining (TA / Lead Mentor)</h3><p>Hands-on labs in classification, clustering, recommender pipelines, and model evaluation for cohorts up to 180 students.</p></article>
-        <article class="card"><h3>Web Design (TA)</h3><p>Front-end foundations with accessibility, semantic HTML, and modern CSS — project-based assessment.</p></article>
+        <div class="card">
+          <h3>Data Models &amp; Algorithms (Instructor)</h3>
+          <p>Active‑learning lectures; rigor with proofs; implementation‑ready pseudocode. Topics: asymptotics, graphs, greedy, divide‑and‑conquer, DP, reductions, NP‑completeness.</p>
+        </div>
+        <div class="card">
+          <h3>Data Mining (TA / Lead Mentor)</h3>
+          <p>Hands‑on labs in classification, clustering, recommender pipelines, and model evaluation for cohorts up to 180 students.</p>
+        </div>
+        <div class="card">
+          <h3>Web Design (TA)</h3>
+          <p>Front‑end foundations with accessibility, semantic HTML, and modern CSS — project‑based assessment.</p>
+        </div>
       </div>
     </section>
 
@@ -313,7 +262,7 @@
         </li>
         <li class="pub" itemprop="itemListElement" itemscope itemtype="https://schema.org/ScholarlyArticle">
           <span class="title" itemprop="name">Word Embedding Bias in Large Language Models</span>
-          <div class="meta"><span class="venue" itemprop="isPartOf">I-SPAN 2025</span></div>
+          <div class="meta"><span class="venue" itemprop="isPartOf">I‑SPAN 2025</span></div>
           <div class="links"><a class="pub-link" href="https://link.springer.com/content/pdf/10.1007/978-981-96-6294-4_20.pdf" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
         </li>
         <li class="pub" itemprop="itemListElement" itemscope itemtype="https://schema.org/ScholarlyArticle">
@@ -333,7 +282,7 @@
       <h2 id="exp-heading">Experience</h2>
       <ul class="timeline">
         <li class="item">
-          <div class="row"><span class="role">Instructor — Data Models &amp; Algorithms</span><span class="time">Sep–Dec 2025</span></div>
+          <div class="row"><span class="role">Instructor — Data Models &amp; Algorithms</span><span class="time">Sep-Dec 2025</span></div>
           <div class="org">University of Victoria</div>
           <ul class="bullets">
             <li>Interactive lectures with active learning</li>
@@ -355,16 +304,16 @@
           <div class="org">University of Victoria</div>
           <ul class="bullets">
             <li>Supported cohorts up to 180 students</li>
-            <li>Designed hands-on labs and grading rubrics</li>
-            <li>Guided projects in ML and front-end fundamentals</li>
+            <li>Designed hands‑on labs and grading rubrics</li>
+            <li>Guided projects in ML and front‑end fundamentals</li>
           </ul>
         </li>
         <li class="item">
           <div class="row"><span class="role">Software Developer</span><span class="time">Nov 2022 – Nov 2023</span></div>
           <div class="org">CCEH, University of Cologne</div>
           <ul class="bullets">
-            <li>Cross-disciplinary research software</li>
-            <li>RACIR project support (higher-ed research)</li>
+            <li>Cross‑disciplinary research software</li>
+            <li>RACIR project support (higher‑ed research)</li>
           </ul>
         </li>
       </ul>
@@ -386,54 +335,35 @@
       <div class="links">
         <a href="#publications">Publications</a>
         <a href="/research.html" target="_blank" rel="noopener">Research</a>
-        <a href="/assets/SheraCVa.pdf" target="_blank" rel="noopener" download>CV</a>
+        <a href="/assets/SheraPotkaCV.pdf" target="_blank" rel="noopener" download>CV</a>
       </div>
     </footer>
   </main>
 
   <script>
-    // Replace no-js class early to avoid FOUC
+    // Replace no-js class
     document.documentElement.classList.remove('no-js');
 
     // Year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Apply initial theme to avoid flash on load
-    (function(){
-      const root = document.documentElement;
-      const sys = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-      if(!root.hasAttribute('data-theme')) root.setAttribute('data-theme', sys);
-    })();
-
-    // Theme toggle (monochrome-only)
-    (function(){
-      const root = document.documentElement;
-      const btn = document.querySelector('.theme-toggle');
-      if(!btn) return;
-      const getSystem = () => window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-      const apply = (t) => root.setAttribute('data-theme', t);
-      btn.addEventListener('click', ()=>{
-        const next = (root.getAttribute('data-theme')||getSystem())==='light' ? 'dark' : 'light';
-        apply(next);
-      });
-    })();
-
-    // Mobile menu (accessible)
+    // Mobile menu toggle (accessible)
     (function(){
       const btn = document.querySelector('.menu-toggle');
       const nav = document.getElementById('mobile-nav');
-      if(!btn || !nav) return;
+      function toggle(){
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        nav.hidden = expanded;
+        if (!expanded) { nav.querySelector('a')?.focus(); }
+      }
+      btn.addEventListener('click', toggle);
+      btn.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggle(); } });
 
-      const open = () => { btn.setAttribute('aria-expanded','true'); nav.hidden = false; nav.querySelector('a')?.focus(); };
-      const close = () => { btn.setAttribute('aria-expanded','false'); nav.hidden = true; };
-
-      btn.addEventListener('click', ()=> (nav.hidden ? open() : close()));
-      btn.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); nav.hidden ? open() : close(); }});
-      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && !nav.hidden) close(); });
-
+      // Show/hide button based on viewport without FOUC
       const mq = window.matchMedia('(max-width: 900px)');
-      const sync = () => { btn.style.display = mq.matches ? 'inline-grid' : 'none'; if(!mq.matches){ close(); } };
-      mq.addEventListener('change', sync); sync();
+      const setBtn = () => { btn.style.display = mq.matches ? 'inline-flex' : 'none'; if(!mq.matches){ nav.hidden = true; btn.setAttribute('aria-expanded','false'); } };
+      mq.addEventListener('change', setBtn); setBtn();
     })();
   </script>
 </body>
