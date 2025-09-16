@@ -4,27 +4,52 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shera Potka — Fairness • Bias • Privacy in AI</title>
-  <meta name="description" content="I’m a postdoctoral researcher in Computer Science at the University of Victoria.
-My work explores the ethical dimensions of AI, focusing on fairness in recommender systems, bias in large language models, and privacy in natural language processing.
-I combine algorithm design with insights from law, linguistics, and social science to study how embeddings shape inclusivity and accountability.
-Currently, I am developing methods that make AI systems more fair, privacy-preserving, and trustworthy.
-My long-term goal is to build a unified framework of “ethical embeddings” for responsible AI in domains such as law, education, and healthcare.
-"/>
-  <style>
+  <meta name="description" content="PhD Instructor & Researcher (UVic). I teach Data Models & Algorithms and study fairness in recommenders, bias in LLMs, and privacy‑preserving NLP. I build methods that elevate minority visibility, measure/mitigate embedding bias, and sanitize text with differential privacy. Seeking a professor role with a research‑led teaching agenda." />
 
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Shera Potka — Fairness • Bias • Privacy in AI" />
+  <meta property="og:description" content="PhD researcher & educator in algorithmic fairness, LLM bias, and privacy‑preserving NLP." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="SheraPotka.png" />
+  <meta property="og:url" content="https://sherapotka.example" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="preload" href="SheraPotka.png" as="image" fetchpriority="high" />
+  <style>
+    :root{
+      --bg: #000;
+      --panel: #0f0f0f;
+      --text: #fff;
+      --muted: #bfbfbf;
+      --accent: #000; /* used only in light mode */
+      --ring: #2a2a2a;
+      --shadow: 0 10px 30px rgba(0,0,0,.4);
+      --radius: 16px;
+    }
     @media (prefers-color-scheme: light) {
-      :root{ --bg:#f7f7fb; --panel:#ffffff; --text:#101318; --muted:#5b6373; --ring:#e8ebf2; }
+      :root{ --bg:#fff; --panel:#fff; --text:#000; --muted:#666; --ring:#e5e5e5; --accent:#000; }
+      header.nav{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(8px);
+      background:rgba(0,0,0,.6);
+    }
+    @media (prefers-color-scheme: light){ header.nav{ background:rgba(255,255,255,.7);} }
+    }
       header.nav{ box-shadow: 0 1px 0 var(--ring); }
     }
     *{ box-sizing: border-box; }
-    html,body{ height:100%; }
+    html,body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text); background:var(--bg);
+      line-height:1.6;
+    }
     body{
       margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
       color:var(--text); background:radial-gradient(1000px 600px at 10% -10%, rgba(122,162,255,.18), transparent 60%),
              radial-gradient(1200px 800px at 90% -20%, rgba(167,139,250,.12), transparent 60%), var(--bg);
       line-height:1.6;
     }
-    a{ color:var(--accent); text-decoration:none; }
+    a{ color:inherit; text-decoration:underline; text-underline-offset:2px; }
     a:hover{ text-decoration:underline; }
     .container{ width:min(1100px, 92%); margin-inline:auto; }
     .visually-hidden{ position:absolute; width:1px; height:1px; margin:-1px; padding:0; border:0; clip:rect(0 0 0 0); overflow:hidden; }
@@ -37,8 +62,9 @@ My long-term goal is to build a unified framework of “ethical embeddings” fo
     header.nav .wrap{ display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:14px 0; }
     .brand{ font-weight:700; letter-spacing:.2px; color:var(--text); }
     nav.links{ display:flex; align-items:center; gap:.9rem; }
-    .btn{ display:inline-block; padding:.6rem .9rem; border-radius:999px; background:var(--accent); color:white; font-weight:600; box-shadow:var(--shadow); border:1px solid color-mix(in oklab, var(--accent) 70%, black 30%); }
-    .btn.ghost{ background:transparent; color:var(--text); border:1px solid var(--ring); box-shadow:none; }
+    .btn{ display:inline-block; padding:.6rem .9rem; border-radius:999px; background:#fff; color:#000; font-weight:600; box-shadow:var(--shadow); border:1px solid #fff; }
+    @media (prefers-color-scheme: light){ .btn{ background:#000; color:#fff; border-color:#000; } }
+    .btn.ghost{ background:transparent; color:var(--text); border:1px solid var(--text); box-shadow:none; }
 
     /* Hero */
     .hero{ display:grid; grid-template-columns: 1.2fr .9fr; gap:2rem; align-items:center; padding:clamp(32px, 6vw, 72px) 0 24px; }
@@ -49,7 +75,7 @@ My long-term goal is to build a unified framework of “ethical embeddings” fo
     .quick a{ padding:.4rem .7rem; border-radius:999px; border:1px solid var(--ring); color:var(--text); }
 
     .hero-photo{ justify-self:end; position:relative; }
-    .hero-photo img{ width:min(440px, 42vw); max-width:100%; height:auto; border-radius:var(--radius); display:block; box-shadow:var(--shadow); border:1px solid var(--ring); background:var(--panel); }
+    .hero-photo img{ width:min(440px, 42vw); max-width:100%; height:auto; border-radius:var(--radius); display:block; box-shadow:var(--shadow); border:1px solid var(--ring); background:var(--panel); filter:grayscale(100%); }
 
     /* Sections */
     section{ padding:40px 0; }
@@ -124,7 +150,7 @@ My long-term goal is to build a unified framework of “ethical embeddings” fo
     <div class="container wrap">
       <a class="brand" href="/" aria-label="Home">Shera Potka</a>
       <nav class="links" aria-label="Primary">
-        <a href="#research">Research</a>
+        <a href="research.html" target="_blank" rel="noopener">Research</a>
         <a href="#publications">Publications</a>
         <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
@@ -134,7 +160,7 @@ My long-term goal is to build a unified framework of “ethical embeddings” fo
       </button>
     </div>
     <div id="mobile-nav" class="container mobile" hidden>
-      <a href="#research">Research</a>
+      <a href="research.html" target="_blank" rel="noopener">Research</a>
       <a href="#publications">Publications</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
@@ -145,8 +171,8 @@ My long-term goal is to build a unified framework of “ethical embeddings” fo
   <main id="main" class="container">
     <section class="hero" aria-labelledby="tagline">
       <div>
-        <h1 id="tagline">Fairness • Bias • Privacy in AI</h1>
-        <p>PhD researcher and educator focusing on data mining, algorithmic fairness, bias in large language models, and privacy‑preserving NLP.</p>
+        <h1 id="tagline">PhD Instructor & Researcher in AI — Fairness • Bias • Privacy</h1>
+        <p>I teach Data Models &amp; Algorithms and conduct research on algorithmic fairness, bias in large language models, and privacy‑preserving NLP. My aim is to build rigorous, deployable methods that make AI systems more equitable and trustworthy.</p>
         <div class="cta">
           <a class="btn" href="#publications">View Publications</a>
           <a class="btn ghost" href="mailto:spotka@uvic.ca">Contact</a>
@@ -162,19 +188,41 @@ My long-term goal is to build a unified framework of “ethical embeddings” fo
       </div>
     </section>
 
-    <section id="research" aria-labelledby="research-heading">
+    <section id="teaching" aria-labelledby="teaching-heading">
+      <h2 id="teaching-heading">Teaching</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Data Models &amp; Algorithms (Instructor)</h3>
+          <p>Active‑learning lectures, rigor with proofs, and implementation‑ready pseudocode. Topics: asymptotics, graphs, greedy, divide‑and‑conquer, DP, reductions, NP‑completeness.</p>
+        </div>
+        <div class="card">
+          <h3>Data Mining (TA / Lead Mentor)</h3>
+          <p>Hands‑on labs in classification, clustering, recommender pipelines, and model evaluation for cohorts up to 180 students.</p>
+        </div>
+        <div class="card">
+          <h3>Web Design (TA)</h3>
+          <p>Front‑end fundamentals with accessibility, semantic HTML, and modern CSS—project‑based assessment.</p>
+        </div>
+      </div>
+      <div class="cta" style="margin-top:12px">
+        <a class="btn" href="teaching-statement.pdf" target="_blank" rel="noopener">Teaching Statement</a>
+        <a class="btn ghost" href="mailto:spotka@uvic.ca?subject=Teaching%20Collaboration">Invite for a guest lecture</a>
+      </div>
+    </section>
+
+    $1 aria-labelledby="research-heading">
       <h2 id="research-heading">Research Focus</h2>
       <div class="cards">
         <!-- TODO: Replace placeholder links with your research pages -->
-        <a class="card" href="https://YOUR-RESEARCH-SITE.com/fairness" target="_blank" rel="noopener noreferrer" aria-label="Open Fairness in Social Recommenders (new tab)">
+        <a class="card" href="research.html#fairness" target="_blank" rel="noopener noreferrer" aria-label="Open Fairness section in Research (new tab)">
           <h3>Fairness in Social Recommenders</h3>
           <p>Improving minority visibility and mitigating popularity bias while preserving utility.</p>
         </a>
-        <a class="card" href="https://YOUR-RESEARCH-SITE.com/llm-bias" target="_blank" rel="noopener noreferrer" aria-label="Open Bias in Large Language Models (new tab)">
+        <a class="card" href="research.html#llm-bias" target="_blank" rel="noopener noreferrer" aria-label="Open LLM Bias section in Research (new tab)">
           <h3>Bias in Large Language Models</h3>
           <p>Measuring gender &amp; race bias in embeddings and contextual models (e.g., SC‑WEAT).</p>
         </a>
-        <a class="card" href="https://YOUR-RESEARCH-SITE.com/privacy" target="_blank" rel="noopener noreferrer" aria-label="Open Privacy in NLP (new tab)">
+        <a class="card" href="research.html#privacy" target="_blank" rel="noopener noreferrer" aria-label="Open Privacy section in Research (new tab)">
           <h3>Privacy in NLP</h3>
           <p>Differentially private text sanitization that maintains semantic coherence (e.g., CluSanT).</p>
         </a>
@@ -187,27 +235,27 @@ My long-term goal is to build a unified framework of “ethical embeddings” fo
         <li class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
           <span class="title" itemprop="name">Community Structure and Coherence in Digital Humanities Works</span>
           <div class="meta"><span class="venue" itemprop="isPartOf">IISA 2023</span> — <em>Best Paper Award</em></div>
-          <div class="links"><a class="pub-link" href="https://ieeexplore.ieee.org/document/10345939" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
+          <div class="links"><a class="pub-link" href="https://ieeexplore.ieee.org/document/10345939" target="_blank" rel="noopener" itemprop="url">Conference</a></div>
         </li>
         <li class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
           <span class="title" itemprop="name">Enhancing Structural Minority Visibility in Link Recommendations (MinWalk)</span>
           <div class="meta"><span class="venue" itemprop="isPartOf">MEDES 2024</span> — <em>Best Paper Award</em></div>
-          <div class="links"><a class="pub-link" href="https://www.researchgate.net/publication/393752947_Enhancing_Structural_Minority_Visibility_in_Link_Recommendations" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
+          <div class="links"><a class="pub-link" href="https://www.researchgate.net/publication/393752947_Enhancing_Structural_Minority_Visibility_in_Link_Recommendations" target="_blank" rel="noopener" itemprop="url">Venue</a></div>
         </li>
         <li class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
           <span class="title" itemprop="name">Word Embedding Bias in Large Language Models</span>
           <div class="meta"><span class="venue" itemprop="isPartOf">I‑SPAN 2025</span></div>
-          <div class="links"><a class="pub-link" href="https://link.springer.com/content/pdf/10.1007/978-981-96-6294-4_20.pdf" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
+          <div class="links"><a class="pub-link" href="https://link.springer.com/content/pdf/10.1007/978-981-96-6294-4_20.pdf" target="_blank" rel="noopener" itemprop="url">Proceedings PDF</a></div>
         </li>
         <li class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
           <span class="title" itemprop="name">Gender &amp; Race Bias in Consumer Product Recommendations</span>
           <div class="meta"><span class="venue" itemprop="isPartOf">AINA 2025</span></div>
-          <div class="links"><a class="pub-link" href="https://www.researchgate.net/publication/390751836_Gender_and_Race_Bias_in_Consumer_Product_Recommendations_by_Large_Language_Models" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
+          <div class="links"><a class="pub-link" href="https://www.researchgate.net/publication/390751836_Gender_and_Race_Bias_in_Consumer_Product_Recommendations_by_Large_Language_Models" target="_blank" rel="noopener" itemprop="url">Preprint</a></div>
         </li>
         <li class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
           <span class="title" itemprop="name">CluSanT: Differentially Private and Semantically Coherent Text Sanitization</span>
           <div class="meta"><span class="venue" itemprop="isPartOf">NAACL 2025</span></div>
-          <div class="links"><a class="pub-link" href="https://aclanthology.org/2025.naacl-long.187/" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
+          <div class="links"><a class="pub-link" href="https://aclanthology.org/2025.naacl-long.187/" target="_blank" rel="noopener" itemprop="url">Conference</a></div>
         </li>
       </ul>
     </section>
@@ -263,7 +311,7 @@ My long-term goal is to build a unified framework of “ethical embeddings” fo
       <div>© <span id="year"></span> Shera Potka</div>
       <div class="links">
         <a href="#publications">Publications</a>
-        <a href="#research">Research</a>
+        <a href="research.html" target="_blank" rel="noopener">Research</a>
         <a href="SheraPotkaCVa.pdf" target="_blank" rel="noopener">CV</a>
       </div>
     </footer>
@@ -285,3 +333,4 @@ My long-term goal is to build a unified framework of “ethical embeddings” fo
   </script>
 </body>
 </html>
+
