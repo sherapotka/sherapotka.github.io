@@ -361,6 +361,12 @@
       const inImage = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top  && e.clientY <= rect.bottom;
       if (!inImage) dlg.close();
     });
+    
+    /* ===== Contact ===== */
+    .contact{ display:flex; justify-content:space-between; align-items:center; gap:1rem; background:var(--panel); border:1px solid var(--ring); border-radius:var(--radius); padding:16px; flex-wrap:wrap; align-items:flex-start; }
+    .contact .who{ min-width:220px; }
+    .contact .cta{ display:flex; flex-wrap:wrap; gap:.6rem; }
+    .contact .note{ margin-top:.3rem; }
   </script>
 </body>
 </html>
