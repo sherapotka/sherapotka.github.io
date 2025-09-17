@@ -164,6 +164,46 @@
       nav.links{ max-width:60vw; }
     }
 
+    /* Light mode defaults */
+:root{
+  --text: #111;     /* readable on white */
+  --bg: #fff;
+  --ink: #000;
+}
+
+.btn{
+  display:inline-block;
+  padding:.55rem .85rem;
+  border-radius:999px;
+  background: var(--bg);
+  color: var(--ink);
+  font-weight:700;
+  box-shadow: var(--shadow);
+  border:1px solid var(--ink);
+  text-decoration:none;
+}
+.btn:hover{ transform: translateY(-1px); }
+
+/* Ghost: make it visible in light mode */
+.btn.ghost{
+  background: transparent;
+  color: var(--text);
+  border: 1px solid currentColor;
+  box-shadow: none;
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark){
+  :root{
+    --text: #eee;
+    --bg: #000;
+    --ink: #fff;
+  }
+  .btn{ background: var(--bg); color: var(--ink); border-color: var(--ink); }
+  .btn.ghost{ color: var(--ink); border-color: var(--ink); }
+}
+
+
     /* ===== Print-friendly ===== */
     @media print{
       :root{ --bg:#ffffff; --panel:#ffffff; --text:#000000; --muted:#555555; --ring:#e5e5e5; }
