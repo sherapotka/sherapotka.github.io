@@ -3,189 +3,173 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shera Potka — Research</title>
-  <meta name="description" content="Research by Shera Potka on fairness in recommenders, demographic bias in LLMs, and privacy-preserving NLP." />
-  <meta name="theme-color" content="#0a0a0a">
+  <title>Shera Potka — Ethical AI Research</title>
+  <meta name="description" content="Shera Potka: research on fairness in recommenders, demographic bias in LLMs, and privacy‑preserving NLP." />
+  <meta name="theme-color" content="#000000">
   <style>
-    /* =============================
-       MONOCHROME MODERN THEME
-       ============================= */
     :root{
-      --bg:#0a0a0a;           /* page background */
-      --surface:#111111;      /* cards/nav */
-      --elev:#161616;         /* subtle elevation */
-      --border:#2a2a2a;       /* hairline borders */
-      --text:#f5f5f5;         /* primary text */
-      --muted:#a3a3a3;        /* secondary text */
-      --link:#ffffff;         /* links & primary accents */
-      --ring:rgba(255,255,255,.24);
+      --bg:#000000;            /* page background */
+      --surface:#0d0d0d;       /* cards/nav */
+      --elev:#141414;          /* subtle elevation */
+      --border:#222;           /* hairline borders */
+      --ink:#f5f5f5;           /* primary text */
+      --muted:#b0b0b0;         /* secondary text */
+      --accent:#ffffff;        /* links & accents */
+      --ring:rgba(255,255,255,.16);
       --radius:18px;
-      --shadow:0 10px 30px rgba(0,0,0,.35);
-      --maxw:1100px;
+      --shadow:0 14px 36px rgba(0,0,0,.65);
+      --maxw:1000px;           /* tighter line length for readability */
     }
 
-    /* Base reset */
     *{box-sizing:border-box}
-    html,body{margin:0; padding:0}
+    html,body{margin:0;padding:0}
 
-    /* Typography */
     body{
       background:var(--bg);
-      color:var(--text);
-      font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";
-      line-height:1.6;
-      font-size:16px;
+      color:var(--ink);
+      font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      line-height:1.65;
+      font-size:17px; /* slightly larger for legibility */
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
     }
 
-    /* Layout wrapper */
-    .wrap{max-width:var(--maxw); margin:0 auto; padding:24px}
+    .wrap{max-width:var(--maxw); margin:0 auto; padding:22px}
 
     /* Header */
-    header{display:flex; gap:16px; align-items:center; justify-content:space-between; padding:14px 0}
-    .brand{font-weight:700; letter-spacing:.3px}
-
+    header{position:sticky; top:0; z-index:50; background:rgba(0,0,0,.8); border-bottom:1px solid var(--border); backdrop-filter:blur(8px)}
+    .top{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0}
+    .brand{font-weight:800; letter-spacing:.2px}
     nav{display:flex; gap:10px; align-items:center}
 
-    /* Links */
-    a{color:var(--link); text-decoration:none}
+    a{color:var(--accent); text-decoration:none}
     a:hover{text-decoration:underline}
 
-    /* Focus visibility */
-    :where(a,button,[role="button"],.btn,.chip):focus-visible{
-      outline:2px dashed var(--link); outline-offset:3px;
-    }
+    .chip{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px;
+      background:transparent; color:var(--ink); border:1px solid var(--border)}
 
-    /* Tokens */
-    .chip{
-      display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px;
-      background:transparent; color:var(--text); border:1px solid var(--border);
-    }
-
-    .btn{
-      display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:12px;
-      background:#fff; color:#000; font-weight:600; border:1px solid transparent;
-    }
-    .btn.sm{padding:8px 12px; font-size:.95rem}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:12px;
+      background:#0a0a0a; color:#fff; font-weight:700; border:1px solid #262626;
+      box-shadow:0 6px 16px rgba(0,0,0,.5); transition:transform .12s, box-shadow .2s, background .15s}
+    .btn:hover{transform:translateY(-1px); text-decoration:none; background:#131313; box-shadow:0 10px 24px rgba(0,0,0,.6)}
+    .btn.ghost{background:transparent; color:var(--ink); border:1px solid var(--border); box-shadow:none}
+    .btn.sm{padding:8px 12px; font-weight:600}
     .btn.block{width:100%; justify-content:center}
-    .btn.ghost{background:transparent; border:1px solid var(--border); color:var(--text)}
-    .btn:hover{transform:translateY(-1px)}
 
-    /* Cards */
-    .card{
-      background:var(--surface);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      padding:22px;
-    }
+    .card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow)}
 
     /* Hero */
-    .hero{padding:36px 0 8px; display:grid; grid-template-columns:1fr 1fr; gap:28px}
-    .hero h1{font-size:clamp(30px, 4vw, 42px); margin:.2rem 0}
-    .tagline{font-size:1.05rem; color:var(--muted)}
+    .hero{padding:24px 0 8px; display:grid; grid-template-columns:1.2fr .8fr; gap:22px}
+    .eyebrow{display:inline-flex; align-items:center; gap:8px; color:var(--muted)}
+    .eyebrow::before{content:""; width:8px; height:8px; border-radius:999px; background:var(--accent)}
+    h1{font-size:clamp(30px,3.6vw,42px); line-height:1.15; margin:.25rem 0}
+    .tagline{font-size:1.02rem; color:var(--muted); max-width:70ch}
 
     /* Sections */
-    .section{margin:44px 0 22px}
-    .section h2{font-size:1.6rem; margin:0 0 12px}
-    .lead{font-size:1.05rem}
+    .section{margin:38px 0 18px}
+    .section h2{font-size:1.35rem; margin:.15rem 0 8px}
+    .lead{font-size:1.02rem}
     .muted{color:var(--muted)}
     .small{font-size:.92rem}
 
-    /* Grid helpers */
-    .grid{display:grid; gap:18px}
-
-    /* Media block */
-    .media{ display:flex; align-items:flex-start; justify-content:center; }
-    .frame{ margin:0; padding:10px; background:var(--elev); border:1px solid var(--border); border-radius:14px;
-            display:flex; flex-direction:column; align-items:center; width:100%; }
-    .frame img{ display:block; width:100%; height:auto; max-height:520px; object-fit:contain; border-radius:10px; cursor:zoom-in; transition:transform .2s ease; }
-    .frame img:hover{ transform:translateY(-2px) }
-    .frame figcaption{ margin-top:8px; color:var(--muted); font-size:.92rem; text-align:center }
-
-    /* Contribution layout */
-    .contrib{display:grid; grid-template-columns:1.2fr .8fr; gap:22px; align-items:start}
+    /* Contribution blocks */
+    .contrib{display:grid; grid-template-columns:1.25fr .75fr; gap:18px; align-items:start}
     .bullets{margin:10px 0 0 0; padding-left:18px}
     .bullets li{margin:6px 0}
 
+    /* Media */
+    .media{display:flex; align-items:flex-start; justify-content:center}
+    .frame{margin:0; padding:10px; background:var(--elev); border:1px solid var(--border); border-radius:14px;
+      display:flex; flex-direction:column; align-items:center; width:100%}
+    .frame img{display:block; width:100%; height:auto; max-height:460px; object-fit:contain; border-radius:10px; cursor:zoom-in; transition:transform .2s}
+    .frame img:hover{transform:translateY(-2px)}
+    .frame figcaption{margin-top:8px; color:var(--muted); font-size:.9rem; text-align:center}
+
     /* Toolkit chips */
     .chips{display:flex; flex-wrap:wrap; gap:10px}
-    .chip.soft{background:transparent; border-color:var(--border); color:var(--muted)}
+    .chip.soft{background:transparent; border-color:var(--border); color:#d2d2d2}
 
     /* Future grid */
-    .future{display:grid; grid-template-columns:repeat(2,1fr); gap:18px}
-    .future .fcard{padding:18px}
-    .fcard h3{margin:6px 0 8px; font-size:1.05rem}
+    .future{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
+    .future .fcard{padding:16px}
+    .fcard h3{margin:6px 0 8px; font-size:1.02rem}
 
-    /* Lightbox */
-    dialog#lightbox{padding:0; border:none; background:transparent}
-    dialog::backdrop{background:rgba(0,0,0,.8)}
-    .lightbox-img{max-width:min(92vw,1100px); max-height:88vh; border-radius:12px; display:block}
-    .lightbox-bar{display:flex; justify-content:space-between; gap:12px; margin:10px auto 0; width:min(92vw,1100px)}
+    /* Publications */
+    .pubs{list-style:none; padding-left:0; margin:0; display:grid; gap:10px}
+    .pub .meta{color:var(--muted); margin-top:4px}
 
-    footer{margin:50px 0 20px; color:var(--muted)}
+    footer{margin:40px 0 18px; color:var(--muted)}
 
     /* Responsive */
     @media (max-width:980px){
-      .hero{grid-template-columns:1fr}
+      :root{--maxw:720px}
+      body{font-size:16.5px}
+      .hero{grid-template-columns:1fr; gap:18px}
       .contrib{grid-template-columns:1fr}
       .future{grid-template-columns:1fr}
+      header{position:static; background:var(--bg); backdrop-filter:none}
     }
 
-    /* Motion preferences */
-    @media (prefers-reduced-motion:reduce){
-      *{transition:none !important}
-    }
+    /* Accessibility */
+    :where(a,button,[role="button"],.btn,.chip):focus-visible{outline:2px dashed var(--accent); outline-offset:3px}
+    @media (prefers-reduced-motion:reduce){*{transition:none!important}}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
+  <header>
+    <div class="wrap top">
       <div class="brand">Shera Potka</div>
-      <nav>
-        <a class="chip" href="/">← Back to main site</a>
+      <nav aria-label="Primary">
+        <a class="chip" href="/">← Main site</a>
         <a class="btn ghost" href="SheraPotkaCVa.pdf" target="_blank" rel="noopener">CV</a>
+        <a class="btn" href="ResearchStatmentShera.pdf" download title="Download Shera's Research Statement">Download Research Statement</a>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <section class="hero card">
+  <main class="wrap" id="main">
+    <!-- HERO -->
+    <section class="hero card" aria-labelledby="hero-title">
       <div>
-        <span class="chip" aria-label="Research Statement">Research Statement</span>
-        <h1>Ethical AI Systems</h1>
-        <p class="tagline">I design AI systems that are technically robust, ethically grounded, and socially responsible, with a focus on fairness, bias mitigation, and privacy in NLP and recommender systems.</p>
-        <p>My work integrates algorithmic innovation with critical reflection on social impacts, ensuring models optimize performance while upholding equity, transparency, and accountability. By combining computational experiments with insights from computer science, ethics, and the social sciences, I address the dual challenge of robustness and trustworthiness. My broader goal is to develop methods that mitigate systemic harms while preserving utility, enabling responsible AI deployment in real-world contexts.</p>
-        <p class="muted small">My work blends rigorous experiments with socially informed objectives so that deployed AI respects diverse human experiences.</p>
+        <span class="eyebrow">Research Statement</span>
+        <h1 id="hero-title">Ethical AI Systems</h1>
+        <p class="tagline">Technically robust, ethically grounded, and socially responsible AI. Focus areas: fairness in recommenders, demographic bias in LLMs, and privacy‑preserving NLP.</p>
+        <p>My work integrates algorithmic innovation with critical reflection on social impacts, ensuring models optimize performance while upholding equity, transparency, and accountability. Combining computational experiments with insights from computer science and the social sciences, I address the dual challenge of <em>robustness</em> and <em>trustworthiness</em>. The goal: mitigate systemic harms while preserving utility for responsible, real‑world deployment.</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+          <a class="btn" href="ResearchStatmentShera.pdf" download>Download Statement</a>
+          <a class="btn ghost" href="#publications">Jump to Publications</a>
+        </div>
       </div>
-      <div class="card">
+      <aside class="card" aria-label="Highlights">
         <div class="muted small" style="margin-bottom:8px">Highlights</div>
         <ul class="bullets" style="margin:0">
-          <li><strong>FairRec:</strong> Developed fairness-aware link recommendation algorithms that ensure exposure parity, improving equitable visibility of minority groups in social recommender systems.</li>
-          <li><strong>Bias Auditing:</strong> Conducted large-scale bias evaluations across GPT, BERT, Cohere, and BGE using <em>Fightin’ Words</em> and <em>SC-WEAT</em>, providing both statistical rigor and interpretability in bias detection.</li>
-          <li><strong>Weighted Bias Scoring:</strong> Introduced a novel scoring framework inspired by the Large Language Model Bias Index (LLMBI) to capture nuanced disparities across demographic dimensions.</li>
-          <li><strong>Differential Privacy (DP):</strong> Designed DP-based text generation methods with embedding-space perturbations, balancing the trade-off between privacy protection and semantic utility.</li>
-          <li><strong>Cross-Domain Relevance:</strong> Applied fairness and privacy methodologies across both NLP and recommender systems, demonstrating the adaptability and scalability of my approaches in diverse AI contexts.</li>
+          <li><strong>FairRec / MinWalk:</strong> Fairness‑aware link recommendation improving long‑term minority visibility without significant precision loss.</li>
+          <li><strong>Bias Auditing:</strong> Large‑scale audits across OpenAI/Google/Microsoft/Cohere/BGE using <em>Fightin’ Words</em>, <em>SC‑WEAT</em>, clustering, and divergence measures.</li>
+          <li><strong>Weighted Bias Scoring:</strong> Framework inspired by LLMBI capturing nuanced demographic disparities.</li>
+          <li><strong>Differential Privacy:</strong> CluSanT and embedding‑level perturbations balancing privacy guarantees with semantic coherence.</li>
+          <li><strong>Cross‑Domain:</strong> Methods span NLP and recommenders; ready for compliance contexts (EU AI Act, NIST RMF).</li>
         </ul>
-      </div>
+      </aside>
     </section>
 
     <!-- CONTRIBUTION 1 -->
-    <section class="section">
-      <h2>1) Fairness in Recommendation Systems</h2>
+    <section class="section" aria-labelledby="fairness">
+      <h2 id="fairness">1) Fairness in Recommendation Systems</h2>
       <div class="contrib">
         <div class="card">
-          <p class="lead">Recommendation algorithms shape visibility. <strong>FairRec</strong> optimizes both accuracy and equitable exposure by integrating exposure-parity constraints into the objective over a probabilistic graph model.</p>
+          <p class="lead">Recommendation algorithms shape visibility. <strong>FairRec/MinWalk</strong> optimizes both accuracy and equitable exposure by integrating exposure‑parity constraints and dynamic network modeling.</p>
           <ul class="bullets">
-            <li>Addresses homophily and popularity bias; boosts minority visibility.</li>
+            <li>Mitigates homophily & popularity bias; boosts minority visibility over time.</li>
             <li>Constrained optimization + stochastic sampling scales to large graphs.</li>
-            <li>On Twitter &amp; citation graphs: <strong>+35% visibility</strong> for under-represented users with no significant precision loss.</li>
+            <li>On social/citation graphs: visibility gains for under‑represented users with minimal precision impact.</li>
           </ul>
         </div>
         <div class="card media">
           <figure class="frame">
-            <img src="Fairrec.png" alt="Visibility after 30 iterations for minority" loading="lazy" decoding="async" data-full="Fairrec.png">
-            <figcaption>Visibility after 30 iterations for minority</figcaption>
+            <img src="Fairrec.png" alt="Visibility improvements for minority nodes over 30 iterations" loading="lazy" decoding="async" data-full="Fairrec.png">
+            <figcaption>Minority visibility over training iterations</figcaption>
             <div class="actions" style="margin-top:10px">
-              <a class="btn sm" href="https://www.researchgate.net/publication/393752947_Enhancing_Structural_Minority_Visibility_in_Link_Recommendations" target="_blank" rel="noopener">PDF</a>
+              <a class="btn sm" href="https://www.researchgate.net/publication/393752947_Enhancing_Structural_Minority_Visibility_in_Link_Recommendations" target="_blank" rel="noopener">Paper</a>
             </div>
           </figure>
         </div>
@@ -193,23 +177,23 @@
     </section>
 
     <!-- CONTRIBUTION 2 -->
-    <section class="section">
-      <h2>2) Demographic Bias Detection in Large Language Models</h2>
+    <section class="section" aria-labelledby="bias">
+      <h2 id="bias">2) Demographic Bias Detection in Large Language Models</h2>
       <div class="contrib">
         <div class="card">
-          <p class="lead">I quantify and explain demographic biases in embeddings from GPT/BERT/Cohere/BGE using a frequency-weighted <em>Fightin’ Words</em> variant and <em>SC-WEAT</em> for contextual effects.</p>
+          <p class="lead">I quantify and explain demographic biases in embeddings from major providers using frequency‑weighted <em>Fightin’ Words</em>, <em>SC‑WEAT</em>, clustering, and divergence tests.</p>
           <ul class="bullets">
-            <li>Computes interpretable z-scores to reveal group-linked word associations.</li>
-            <li>Findings show persistent links (e.g., “Black” → criminal terms; “female” → domesticity/passivity) across models.</li>
-            <li>Results inform auditing and debiasing for production LLMs.</li>
+            <li>Interpretable scores reveal persistent gender/race associations that surface in downstream tasks (e.g., product recommendations).</li>
+            <li>Multi‑method audit pipelines (Marked Words, SVM, Jensen–Shannon divergence) support actionable mitigations.</li>
+            <li>Outputs inform debiasing strategies for production LLMs.</li>
           </ul>
         </div>
         <div class="card media">
           <figure class="frame">
-            <img src="Bias.png" alt="Gender Association of Top Words" loading="lazy" decoding="async" data-full="images/bias-1.jpg">
-            <figcaption>Gender Association of Top Words</figcaption>
+            <img src="Bias.png" alt="Gender association of top words across models" loading="lazy" decoding="async" data-full="Bias.png">
+            <figcaption>Gender‑linked associations across embeddings</figcaption>
             <div class="actions" style="margin-top:10px">
-              <a class="btn sm" href="https://link.springer.com/content/pdf/10.1007/978-981-96-6294-4_20.pdf" target="_blank" rel="noopener">PDF</a>
+              <a class="btn sm" href="https://link.springer.com/content/pdf/10.1007/978-981-96-6294-4_20.pdf" target="_blank" rel="noopener">Paper</a>
             </div>
           </figure>
         </div>
@@ -217,99 +201,90 @@
     </section>
 
     <!-- CONTRIBUTION 3 -->
-    <section class="section">
-      <h2>3) Privacy-Preserving Text Generation</h2>
+    <section class="section" aria-labelledby="privacy">
+      <h2 id="privacy">3) Privacy‑Preserving Text Generation</h2>
       <div class="contrib">
         <div class="card">
           <p class="lead">I develop differentially private generation by perturbing <em>embedding space</em> rather than token probabilities, preserving coherence while reducing memorization and leakage.</p>
           <ul class="bullets">
-            <li>DP-SGD plus inference-time embedding noise for smooth, contextual outputs.</li>
-            <li><strong>−60% identifiable memorization</strong> with &gt;85% human-rated quality retained.</li>
+            <li>DP‑SGD + inference‑time embedding noise produce smooth, contextual outputs.</li>
+            <li>Lower identifiable memorization with high human‑rated quality retained.</li>
             <li>Applications: healthcare narratives, legal anonymization, educational feedback.</li>
           </ul>
         </div>
         <div class="card media">
           <figure class="frame">
             <img src="privat.png" alt="Privacy–utility frontier comparing methods" loading="lazy" decoding="async" data-full="privat.png">
-            <figcaption>Semantic similarity improvement</figcaption>
+            <figcaption>Privacy–utility frontier</figcaption>
             <div class="actions" style="margin-top:10px">
-              <a class="btn sm" href="https://aclanthology.org/2025.naacl-long.187/" target="_blank" rel="noopener">PDF</a>
+              <a class="btn sm" href="https://aclanthology.org/2025.naacl-long.187/" target="_blank" rel="noopener">Paper</a>
             </div>
           </figure>
         </div>
       </div>
     </section>
 
-    <!-- METHODS -->
-    <section class="section">
-      <h2>Methodological Toolkit</h2>
+    <!-- FIVE-YEAR PLAN -->
+    <section class="section" aria-labelledby="plan">
+      <h2 id="plan">Five‑Year Plan (at a glance)</h2>
       <div class="card">
-        <div class="chips" style="margin-bottom:8px">
-          <span class="chip soft">Embedding analysis (PCA, cosine)</span>
-          <span class="chip soft">Directional bias tests &amp; SC-WEAT</span>
-          <span class="chip soft">Demographic parity &amp; exposure fairness</span>
-          <span class="chip soft">Disparity ratios &amp; equal opportunity</span>
-          <span class="chip soft">Custom losses, Lagrangian relaxation</span>
-          <span class="chip soft">DP-SGD &amp; embedding perturbation</span>
-          <span class="chip soft">BLEU/ROUGE, perplexity, CoLA</span>
-          <span class="chip soft">BERT · RoBERTa · GPT · Cohere · BGE</span>
-        </div>
-        <p class="muted small">A diverse, reproducible toolkit lets me move across tasks while keeping scientific rigor.</p>
+        <ul class="bullets">
+          <li><strong>Dynamic Fairness:</strong> Treat fairness as a temporal property in evolving networks; sustain minority visibility at scale.</li>
+          <li><strong>Systemic Bias:</strong> Move beyond local prompts to structural rebalancing of embedding spaces.</li>
+          <li><strong>Privacy as Transformation:</strong> Coherence‑preserving, embedding‑level privacy integrated into generation loops.</li>
+          <li><strong>Ethical Embeddings Theory:</strong> Unified mathematical framework connecting visibility, stereotypes, and attribute leakage.</li>
+        </ul>
+        <p class="muted small">Details elaborated in the downloadable statement.</p>
       </div>
     </section>
 
-    <!-- FUTURE -->
-    <section class="section">
-      <h2>Future Research Agenda</h2>
-      <div class="future">
-        <div class="card fcard">
-          <h3>Adaptive Fairness in Dynamic Systems</h3>
-          <p class="muted">Online learning to maintain fairness as populations and behaviors shift.</p>
+    <!-- METHODS -->
+    <section class="section" aria-labelledby="toolkit">
+      <h2 id="toolkit">Methodological Toolkit</h2>
+      <div class="card">
+        <div class="chips" style="margin-bottom:8px">
+          <span class="chip soft">Embedding analysis (PCA, cosine)</span>
+          <span class="chip soft">Directional tests & SC‑WEAT</span>
+          <span class="chip soft">Exposure & demographic parity</span>
+          <span class="chip soft">Disparity ratios & equal opportunity</span>
+          <span class="chip soft">Custom losses; Lagrangian relaxation</span>
+          <span class="chip soft">DP‑SGD; embedding perturbation</span>
+          <span class="chip soft">BLEU · ROUGE · perplexity · CoLA</span>
+          <span class="chip soft">BERT · RoBERTa · GPT · Cohere · BGE</span>
         </div>
-        <div class="card fcard">
-          <h3>Cross-lingual / Cross-cultural Auditing</h3>
-          <p class="muted">Extend tools to low-resource and Indigenous languages via multilingual embeddings.</p>
-        </div>
-        <div class="card fcard">
-          <h3>Human-AI Feedback Loops</h3>
-          <p class="muted">Measure how model outputs shape user behavior, trust, and fairness longitudinally.</p>
-        </div>
-        <div class="card fcard">
-          <h3>Ethics-Integrated Pretraining</h3>
-          <p class="muted">Multi-objective pretraining aligned with GDPR / EU AI Act for regulation-ready AI.</p>
-        </div>
+        <p class="muted small">A diverse, reproducible toolkit for rigorous, cross‑domain research.</p>
       </div>
     </section>
 
     <!-- PUBLICATIONS -->
     <section id="publications" class="section" aria-labelledby="pubs-heading">
       <h2 id="pubs-heading">Selected Publications</h2>
-      <ul class="pubs" itemscope itemtype="https://schema.org/ItemList" style="list-style:none; padding-left:0; margin:0; display:grid; gap:12px">
+      <ul class="pubs" itemscope itemtype="https://schema.org/ItemList">
         <meta itemprop="name" content="Selected Publications by Shera Potka"/>
         <li class="pub card" itemprop="itemListElement" itemscope itemtype="https://schema.org/ScholarlyArticle">
           <span class="title" itemprop="name">Community Structure and Coherence in Digital Humanities Works</span>
           <div class="meta"><span class="venue" itemprop="isPartOf">IISA 2023</span> — <em>Best Paper Award</em></div>
-          <div class="links"><a class="btn sm" href="https://ieeexplore.ieee.org/document/10345939" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
+          <div class="links"><a class="btn sm ghost" href="https://ieeexplore.ieee.org/document/10345939" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
         </li>
         <li class="pub card" itemprop="itemListElement" itemscope itemtype="https://schema.org/ScholarlyArticle">
           <span class="title" itemprop="name">Enhancing Structural Minority Visibility in Link Recommendations (MinWalk)</span>
           <div class="meta"><span class="venue" itemprop="isPartOf">MEDES 2024</span> — <em>Best Paper Award</em></div>
-          <div class="links"><a class="btn sm" href="https://www.researchgate.net/publication/393752947_Enhancing_Structural_Minority_Visibility_in_Link_Recommendations" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
+          <div class="links"><a class="btn sm ghost" href="https://www.researchgate.net/publication/393752947_Enhancing_Structural_Minority_Visibility_in_Link_Recommendations" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
         </li>
         <li class="pub card" itemprop="itemListElement" itemscope itemtype="https://schema.org/ScholarlyArticle">
           <span class="title" itemprop="name">Word Embedding Bias in Large Language Models</span>
           <div class="meta"><span class="venue" itemprop="isPartOf">I‑SPAN 2025</span></div>
-          <div class="links"><a class="btn sm" href="https://link.springer.com/content/pdf/10.1007/978-981-96-6294-4_20.pdf" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
+          <div class="links"><a class="btn sm ghost" href="https://link.springer.com/content/pdf/10.1007/978-981-96-6294-4_20.pdf" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
         </li>
         <li class="pub card" itemprop="itemListElement" itemscope itemtype="https://schema.org/ScholarlyArticle">
-          <span class="title" itemprop="name">Gender &amp; Race Bias in Consumer Product Recommendations</span>
+          <span class="title" itemprop="name">Gender & Race Bias in Consumer Product Recommendations</span>
           <div class="meta"><span class="venue" itemprop="isPartOf">AINA 2025</span></div>
-          <div class="links"><a class="btn sm" href="https://www.researchgate.net/publication/390751836_Gender_and_Race_Bias_in_Consumer_Product_Recommendations_by_Large_Language_Models" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
+          <div class="links"><a class="btn sm ghost" href="https://www.researchgate.net/publication/390751836_Gender_and_Race_Bias_in_Consumer_Product_Recommendations_by_Large_Language_Models" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
         </li>
         <li class="pub card" itemprop="itemListElement" itemscope itemtype="https://schema.org/ScholarlyArticle">
           <span class="title" itemprop="name">CluSanT: Differentially Private and Semantically Coherent Text Sanitization</span>
           <div class="meta"><span class="venue" itemprop="isPartOf">NAACL 2025</span></div>
-          <div class="links"><a class="btn sm" href="https://aclanthology.org/2025.naacl-long.187/" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
+          <div class="links"><a class="btn sm ghost" href="https://aclanthology.org/2025.naacl-long.187/" target="_blank" rel="noopener" itemprop="url">PDF</a></div>
         </li>
       </ul>
     </section>
@@ -317,12 +292,12 @@
     <footer>
       <div class="muted small">© <span id="year"></span> Shera Potka · <a href="/">Home</a></div>
     </footer>
-  </div>
+  </main>
 
-  <!-- Accessible lightbox -->
+  <!-- Lightbox -->
   <dialog id="lightbox" aria-label="Image preview">
     <img class="lightbox-img" src="" alt="">
-    <div class="lightbox-bar">
+    <div style="display:flex; justify-content:space-between; gap:12px; margin:10px auto 0; width:min(92vw,1100px)">
       <button class="btn ghost" id="closeBox" aria-label="Close image">Close</button>
       <span class="muted small">Click outside or press Esc to dismiss</span>
     </div>
@@ -331,7 +306,7 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // simple lightbox
+    // Lightbox
     const dlg = document.getElementById('lightbox');
     const imgEl = dlg.querySelector('.lightbox-img');
     const closeBtn = document.getElementById('closeBox');
@@ -345,11 +320,9 @@
     closeBtn.addEventListener('click', ()=> dlg.close());
     dlg.addEventListener('click', (e)=>{
       const rect = imgEl.getBoundingClientRect();
-      const inImage = e.clientX >= rect.left && e.clientX <= rect.right &&
-                      e.clientY >= rect.top  && e.clientY <= rect.bottom;
+      const inImage = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top  && e.clientY <= rect.bottom;
       if (!inImage) dlg.close();
     });
   </script>
 </body>
 </html>
-
