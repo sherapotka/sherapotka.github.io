@@ -199,4 +199,21 @@ h2{ margin:34px 0 10px; }
 @media (prefers-color-scheme: dark){
   .btn.ghost{ color:#fff; border-color:#fff; }
 }
+/* Make only the NAVBAR CV button bigger */
+header.nav .btn.cv{
+  padding: .7rem 1.1rem;     /* was ~.55rem .9rem */
+  font-size: 1rem;           /* was inherited (~0.95rem) */
+  line-height: 1;            /* keeps it compact */
+}
+
+header.nav .btn.cv .icon{
+  width: 1.2em;              /* bump icon slightly */
+  height: 1.2em;
+}
+
+/* Optional: ensure a11y-friendly tap target on touch */
+@media (pointer: coarse){
+  header.nav .btn.cv{ padding: .85rem 1.2rem; }
+}
+
 
